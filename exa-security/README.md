@@ -18,7 +18,6 @@ The feature implementations mainly rely on [Top 10 OWASP](https://www.owasp.org/
 > This plugin is NOT an alternative to [Grails Security recommandation](http://grails.github.io/grails-doc/2.4.4/guide/security.html) or [Spring Security](https://github.com/grails-plugins/grails-spring-security-core). Check these documentations to maximize your application security.
 
 <p align="right"><a href="#Top">Top</a></p>
-
 <a name="features"></a>
 ##FEATURES
 
@@ -206,14 +205,12 @@ grails.plugin.exa.sec.redirects.map = ['http://www.yahoo.Fr']
 <p align="right"><a href="#Top">Top</a></p>
 <a name="roadmap"></a>
 ##ROADMAP
----------------
 
 Tell us !
 
 <p align="right"><a href="#Top">Top</a></p>
 <a name="License"></a>
 ##LICENSE
----------------
 
 Copyright 2015 EXANPE <exanpe@gmail.com>
 
