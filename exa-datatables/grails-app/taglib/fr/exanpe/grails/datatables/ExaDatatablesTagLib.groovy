@@ -1,4 +1,4 @@
-package fr.exa.datatables
+package fr.exanpe.grails.datatables
 
 /**
  * Taglib that ease use of Datatables.net
