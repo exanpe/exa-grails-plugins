@@ -24,6 +24,14 @@ The feature implementations mainly rely on [Top 10 OWASP](https://www.owasp.org/
 
 > Please note that all features are **disabled** by default. Enable features by configuration according to your requirements.
 
+Features available
+* HTTP response **headers**
+* Secured **XML** parser
+* **Link** handling CSRF token
+* Enhanced **scaffolding**
+* Advanced **cookie** configuration
+* **Redirect** engine
+
 ### HEADERS
 
 #### NOCACHE
@@ -70,7 +78,7 @@ This tag add the Grails CSRF feature to link. Use it in link that do perform wri
 This tag is a wrapper aroung <g:link>, then all <g:link> attributes are compatible with <exas:link>
 
 ```xml
-<exas:link action="myaction" params="['p':'t']">Click me !</exas:link>
+<exas:link action="myaction">Click me !</exas:link>
 ```
 
 ```groovy
