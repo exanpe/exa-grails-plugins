@@ -189,7 +189,8 @@ grails.plugin.exa.sec.redirects.map = ['http://www.yahoo.Fr']
 
 > Session is invalidated by default. Set flash.keepSession to true to bypass invalidation
 
-
+<p align="right"><a href="#Top">Top</a></p>
+<a name="changelog"></a>
 ##CHANGE LOG
 
 * v1.0.0 : Release
