@@ -9,5 +9,5 @@ This plugin provides features to enhance Grails 2.4.x security, as well as few o
 * Enhanced **scaffolding**
 * Advanced **cookie** configuration
 * **Redirect** engine
-<br/>
+
 [Link to documentation and description](https://github.com/exanpe/exa-grails-plugins/tree/master/exa-security)
