@@ -13,17 +13,16 @@ class ExaSecurityGrailsPlugin {
             "grails-app/controllers/fr/exanpe/test/**"
     ]
 
-    // TODO Fill in these fields
     def title = "Exa Security Plugin" // Headline display name of the plugin
     def author = "Julien Maupoux"
     def authorEmail = ""
     def description = '''\
 Enhance your application security with some tools - script, scaffolding, filters and more.
-This plugin target is Grails 2
+This plugin is only compatible with Grails 2
 '''
 
     // URL to the plugin's documentation
-    def documentation = "http://grails.org/plugin/exa-security" //TODO
+    def documentation = "https://github.com/exanpe/exa-grails-plugins/tree/master/exa-security"
 
     // License: one of 'APACHE', 'GPL2', 'GPL3'
 //    def license = "APACHE"
@@ -34,10 +33,10 @@ This plugin target is Grails 2
     def developers = [ [ name: "Julien Maupoux", email: "jmaupoux@gmail.com" ]]
 
     // Location of the plugin's issue tracker.
-    def issueManagement = [ system: "github", url: "http://jira.grails.org/browse/GPMYPLUGIN" ]//TODO
+    def issueManagement = [ system: "github", url: "https://github.com/exanpe/exa-grails-plugins/issues" ]
 
     // Online location of the plugin's browseable source code.
-    def scm = [ url: "http://svn.codehaus.org/grails-plugins/" ] //TODO
+    def scm = [ url: "https://github.com/exanpe/exa-grails-plugins/tree/master/exa-security" ]
 
     def doWithWebDescriptor = { xml ->
 
