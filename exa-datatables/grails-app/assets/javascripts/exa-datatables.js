@@ -16,11 +16,21 @@ if (!Exa) {
  * @param {string} id				Unique client ID of the component
  * @param {array}  data				Data to display, in JSON format
  * @param {string} columns			Data columns to display
+ * @param {boolean} auto    		Auto rendering DataTables or not
+ * @param {boolean} filtering		Table filtering
+ * @param {boolean} ordering		Columns ordering
+ * @param {boolean} paging		    Table pagination
+ * @param {boolean} infos		    Table informations
  */
-Exa.Datatable = function(id, data, columns) {
+Exa.Datatable = function(id, data, columns, auto, filtering, ordering, paging, infos) {
     this.id = id;
     this.data = data;
     this.columns = columns;
+    this.auto = (auto === true);
+    this.filtering = (filtering === true);
+    this.ordering = (ordering === true);
+    this.paging = (paging === true);
+    this.infos = (infos === true);
     this.options = {};
     this.instance = null;
 };
@@ -66,18 +76,18 @@ Exa.Datatable.prototype._init = function() {
     this.options = {
         data: this.data,
         // Filtering
-        filter: true,
+        filter: this.filtering,
         // Ordering
-        ordering: true,
+        ordering: this.ordering,
         order: [],
         // Display infos
-        info: true,
+        info: this.infos,
         // Grid is responsive, but without all the details of each row
         responsive: {
             details: false
         },
         // Paging conf
-        paging: true,
+        paging: this.paging,
         pageLength: 8,
         lengthMenu: [[8, 20, 50], [8, 20, 50]],
         // Local storage of the grid state
@@ -85,6 +95,11 @@ Exa.Datatable.prototype._init = function() {
         // Columns
         columns: columns
     };
+
+    // Auto rendering
+    if (this.auto === true) {
+        this.render({});
+    }
 };
 
 /**

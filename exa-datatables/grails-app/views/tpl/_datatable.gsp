@@ -6,7 +6,7 @@
 <script type="text/javascript" charset="utf-8">
     <g:applyCodec encodeAs="none">
         $(document).ready(function() {
-            new Exa.Datatable("${id}", ${data}, "${columns}")
+            new Exa.Datatable("${id}", ${data}, "${columns}", ${auto}, ${filtering}, ${ordering}, ${paging}, ${infos})
                 ._init();
         });
     </g:applyCodec>
