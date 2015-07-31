@@ -91,8 +91,8 @@
 
         ${session.id}<br/>
 
-        <g:link action="redirect">Redirect flash - clean session</g:link>
-        <g:link action="redirectkeep">Redirect flash - keep session</g:link><br/>
+        <g:link action="doredirect">Redirect flash - clean session</g:link>
+        <g:link action="doredirectkeep">Redirect flash - keep session</g:link><br/>
 
         <g:link controller="redirectEngine" action="map" params="[key : 'yahoo']">Redirect Map - clean session</g:link>
         <g:link controller="redirectEngine" action="map" params="[key : 'yahoo_keepsession']">Redirect Map - keep session</g:link>

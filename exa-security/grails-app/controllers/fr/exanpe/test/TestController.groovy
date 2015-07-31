@@ -1,18 +1,20 @@
 package fr.exanpe.test
 
+import grails.validation.Validateable
+
 class TestController {
 
     static allowedMethods = [save: "POST", index : "GET", reset : "GET"]
 
     def index() {
         if(!flash.command){
-            flash.command = new YoCommand()
+            flash.command = new TestCommand()
         }
 
         return [command : flash.command]
     }
 
-    def save(YoCommand command){
+    def save(TestCommand command){
         withForm {
             if(command.hasErrors()){
                 flash.command = command
@@ -33,16 +35,16 @@ class TestController {
     }
 
     def reset(){
-        flash.command = new YoCommand()
+        flash.command = new TestCommand()
         redirect(action: "index")
     }
 
-    def redirect(){
+    def doredirect(){
         flash.redirect = "http://www.google.fr"
         redirect(controller: "redirectEngine", action: "flash")
     }
 
-    def redirectkeep(){
+    def doredirectkeep(){
         flash.redirect = "http://www.google.fr"
         flash.keepSession = true
         redirect(controller: "redirectEngine", action: "flash")
@@ -50,3 +52,7 @@ class TestController {
 
 }
 
+@Validateable
+class TestCommand{
+
+}

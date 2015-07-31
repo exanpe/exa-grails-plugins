@@ -86,8 +86,8 @@
         <exas:link action="link" params="['p':'t']">Success2</exas:link>
         <g:link action="link">Failure</g:link><br/>
 
-        <g:link action="redirect">Redirect flash / clean session</g:link>
-        <g:link action="redirectkeep">Redirect flash / keep session</g:link><br/>
+        <g:link action="doredirect">Redirect flash / clean session</g:link>
+        <g:link action="doredirectkeep">Redirect flash / keep session</g:link><br/>
 
         <g:link controller="redirectEngine" action="map" params="[key : 'g']">Redirect Map clean session</g:link>
         <g:link controller="redirectEngine" action="map" params="[key : 'gk']">Redirect Map keep session</g:link>

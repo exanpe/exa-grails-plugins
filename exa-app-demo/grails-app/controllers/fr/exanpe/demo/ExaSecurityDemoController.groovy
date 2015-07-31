@@ -28,12 +28,12 @@ class ExaSecurityDemoController {
         redirect(action: "index")
     }
 
-    def redirect(){
+    def doredirect(){
         flash.redirect = "http://www.google.fr"
         redirect(controller: "redirectEngine", action: "flash")
     }
 
-    def redirectkeep(){
+    def doredirectkeep(){
         flash.redirect = "http://www.google.fr"
         flash.keepSession = true
         redirect(controller: "redirectEngine", action: "flash")
