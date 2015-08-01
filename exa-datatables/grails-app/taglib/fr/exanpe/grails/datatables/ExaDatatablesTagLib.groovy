@@ -23,7 +23,7 @@ class ExaDatatablesTagLib {
      * @attr infos  Enable or disable table information display field (default true)
      * @attr auto  Enable or disable auto rendering of the datatable (default true).
      *             Used to take control over Datatable settings or customization.
-     *             In this case, you have to call render() yourself on client-side.
+     *             If false, you have to call render(options) yourself on client-side.
      */
     def datatable = { attrs, body ->
         def filtering = attrs.filtering ?: "true"
