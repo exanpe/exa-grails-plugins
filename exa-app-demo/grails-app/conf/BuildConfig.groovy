@@ -68,6 +68,7 @@ grails.project.dependency.resolution = {
         runtime ":jquery:1.11.1"
 
         compile ":exa-security:1.0.0-SNAPSHOT"
+        compile ":exa-datatables:1.0.0-SNAPSHOT"
 
         // Uncomment these to enable additional asset-pipeline capabilities
         //compile ":sass-asset-pipeline:1.9.0"
