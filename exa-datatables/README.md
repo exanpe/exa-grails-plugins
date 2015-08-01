@@ -50,6 +50,14 @@ Javascript `grails-app/assets/javascripts/application.js`:
 ```javascript
 //= require jquery
 //= require exa-datatables
+...
+```
+
+Stylesheet `grails-app/assets/stylesheets/application.css`:
+```
+*= require exa-datatables
+*= *= require main
+...
 ```
 
 <p align="right"><a href="#Top">Top</a></p>
