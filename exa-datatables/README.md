@@ -36,7 +36,7 @@ Of course, this plugin provides a way to customize all of existing features of D
 
 The plugin depends on both jQuery and asset-pipeline, so include them as dependencies in your BuildConfig.groovy file :
 
-```
+```groovy
     plugins {
         compile ":asset-pipeline:1.9.9"
         runtime ":jquery:1.11.1"
@@ -56,9 +56,12 @@ Javascript `grails-app/assets/javascripts/application.js`:
 
 Stylesheet `grails-app/assets/stylesheets/application.css`:
 ```
-*= require exa-datatables
-*= *= require main
+/*
 ...
+*= require exa-datatables
+*= require main
+...
+*/
 ```
 
 <p align="right"><a href="#Top">Top</a></p>
@@ -136,7 +139,7 @@ DataTable is displayed with default settings: filtering, ordering, paging and ta
 
 ### Custom table
 
-Sometimes, you need more than the data to display, for example, an extra column where you want to display some actions.
+Sometimes, you need more than simple the data to display, for example, an extra column to display custom actions.
 Below, we give you some hints to achieve a such customization:
 
 `DemoController.groovy`
@@ -171,7 +174,7 @@ Below, we give you some hints to achieve a such customization:
         $(document).ready(function() {
             var datatable = Exa.Datatable.getDatatable('table2');
             var optionColumn = { "data": null,
-                "defaultContent": "<button name='alert' class='btn-alert'>alert</button>"
+                "defaultContent": "<button name='alert' class='btn-alert'>Price</button>"
             };
             datatable.addColumn(optionColumn);
             datatable.render();
@@ -187,6 +190,13 @@ Below, we give you some hints to achieve a such customization:
 </html>
 ```
 
+Some tips about the code above :
+* Disable the auto-rendering with attribute `auto="false"`
+* Add an extra row into the thead of the table for the 'Action' column
+* Use the helper function `Exa.Datatable.getDatatable` to get the JS instance of the datatable linked to the client ID 'table2'
+* Call the `render()` function explicitly
+* Notice the usage `getInstance()` that allow to get the real DataTables.net component, wrapped by our taglib.  Basically, this function gives you acces to the power of all the DataTables native features.
+
 <p align="right"><a href="#Top">Top</a></p>
 <a name="changelog"></a>
 ##CHANGE LOG
@@ -197,7 +207,8 @@ Below, we give you some hints to achieve a such customization:
 <a name="roadmap"></a>
 ##ROADMAP
 
-Tell us !
+Better integration with ajax data loading, and some of DataTables extensions and plugins: Internationalisation, Scroller, ...
+If you need another features, please fill an issue on Github!
 
 <p align="right"><a href="#Top">Top</a></p>
 <a name="License"></a>
