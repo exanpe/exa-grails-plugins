@@ -24,9 +24,10 @@ This plugin is pre-configured to ease integration with DataTables.
 So, most of the important features are enabled by default like:
 * Instant search,
 * Pagination,
-* Column ordering.
+* Column ordering,
+* ...
 
-Of course, this plugin provides a way to customize all of existing features of DataTables.net.
+Of course, this plugin provides a way to use all of existing features of DataTables.net.
 
 > The full DataTables jQuery plugin documentation is available here: [DataTables.net](https://www.datatables.net/).
 
