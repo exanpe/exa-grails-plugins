@@ -6,7 +6,11 @@ import org.codehaus.groovy.grails.web.json.JSONArray
 class ExaDatatablesDemoController {
 
     def index() {
-        [count: 10, data: getData() as JSON]
+        [data: getData() as JSON]
+    }
+
+    def custom() {
+        [data: getData() as JSON]
     }
 
     private def getData() {
