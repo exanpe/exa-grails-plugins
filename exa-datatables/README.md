@@ -5,6 +5,7 @@
 * [Introduction](#intro)
 * [Features](#features)
 * [Plugin configuration](#configuration)
+* [Taglib](#taglib)
 * [Usage](#usage)
 * [Changelog](#changelog)
 * [Roadmap](#roadmap)
@@ -43,7 +44,7 @@ The plugin depends on both jQuery and asset-pipeline, so include them as depende
     }
 ```
 
-Then, thanks to the Asset Pipeline plugin, you just have to reference the following resources to load the static
+Then, thanks to the Asset Pipeline plugin, you just have to reference the following files to load the static
 resources needed by DataTables :
 
 Javascript `grails-app/assets/javascripts/application.js`:
@@ -61,9 +62,130 @@ Stylesheet `grails-app/assets/stylesheets/application.css`:
 ```
 
 <p align="right"><a href="#Top">Top</a></p>
+<a name="taglib"></a>
+##Taglib
+
+The tag must be used through the namespace `exa` as follow:
+
+```gsp
+ <exa:datatable id="table1" data="..." columns="...">
+     <thead>
+     <tr>
+        ...
+     </tr>
+     </thead>
+ </exa:datatable>
+```
+
+Tag attributes:
+
+| Attribute | Description                                                                                                                                                                             | Default value |
+|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------:|
+| id        | **Required** - Unique client-side ID of the datatable                                                                                                                                   |               |
+| data      | **Required** - JSON datas to display                                                                                                                                                    |               |
+| columns   | Name of data columns to display                                                                                                                                                         |               |
+| class     | CSS classes to apply to the table                                                                                                                                                       |               |
+| filtering | Enable or disable table filtering                                                                                                                                                       |      true     |
+| ordering  | Enable or disable column ordering                                                                                                                                                       |      true     |
+| paging    | Enable or disable paging                                                                                                                                                                |      true     |
+| infos     | Enable or disable table information display field                                                                                                                                       |      true     |
+| auto      | Enable or disable auto rendering of the datatable.  Used to take control over Datatable settings or customization.  If false, you have to call render(options) yourself on client-side. |      true     |
+
+<p align="right"><a href="#Top">Top</a></p>
 <a name="usage"></a>
 ##USAGE
 
+#### Simple case
+
+In the following case, we show the simplest way to use Datatable tag.
+
+Only columns col1, col2 and col3 from data, provided as JSON by a controller, are used.
+
+DataTable is displayed with default settings: filtering, ordering, paging and table infos.
+
+`DemoController.groovy`
+```groovy
+    def index() {
+        [data: getMyData() as JSON]
+    }
+```
+
+`index.gsp`
+```gsp
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="layout" content="main" />
+    <title>Simple case</title>
+</head>
+<body>
+
+    <exa:datatable id="table1" data="${data}" columns="col1 col2 col3">
+        <thead>
+        <tr>
+            <th><g:message code="col1.label" default="Col 1" /></th>
+            <th><g:message code="col2.label" default="Col 2" /></th>
+            <th><g:message code="col3.label" default="Col 3" /></th>
+        </tr>
+        </thead>
+    </exa:datatable>
+
+</body>
+</html>
+```
+
+### Custom table
+
+Sometimes, you need more than the data to display, for example, an extra column where you want to display some actions.
+Below, we give you some hints to achieve a such customization:
+
+`DemoController.groovy`
+```groovy
+    def custom() {
+        [data: getMyData() as JSON]
+    }
+```
+
+`custom.gsp`
+```gsp
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="layout" content="main" />
+    <title>Custom table</title>
+</head>
+<body>
+
+    <exa:datatable id="table2" data="${data}" columns="arrondissement adresse nom_du_cafe" auto="false">
+        <thead>
+        <tr>
+            <th><g:message code="demo.arrondissement.label" /></th>
+            <th><g:message code="demo.adresse.label" /></th>
+            <th><g:message code="demo.nom_du_cafe.label" /></th>
+            <th><g:message code="demo.actions.label" default="Actions" /></th>
+        </tr>
+        </thead>
+    </exa:datatable>
+
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            var datatable = Exa.Datatable.getDatatable('table2');
+            var optionColumn = { "data": null,
+                "defaultContent": "<button name='alert' class='btn-alert'>alert</button>"
+            };
+            datatable.addColumn(optionColumn);
+            datatable.render();
+
+            $('#table2 tbody').on('click', '.btn-alert', function () {
+                var data = datatable.getInstance().row($(this).parents('tr')).data();
+                alert("Coffee price: " + data['prix_comptoir']);
+            });
+        });
+    </script>
+
+</body>
+</html>
+```
 
 <p align="right"><a href="#Top">Top</a></p>
 <a name="changelog"></a>
