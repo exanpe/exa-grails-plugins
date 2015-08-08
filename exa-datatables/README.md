@@ -198,6 +198,30 @@ Some tips about the code above :
 * Call the `render()` function explicitly
 * Notice the usage `getInstance()` that allow to get the real DataTables.net component, wrapped by our taglib.  Basically, this function gives you acces to the power of all the DataTables native features.
 
+### Twitter Bootstrap 3
+
+You love Twitter Bootstrap? So do we.
+
+DataTables.net helps to integrate seamlessly with Twitter Bootstrap in order to keep a consistence with the look and feel of your Bootstrap site.
+Once you have loaded Twitter Bootstrap resources in your app, replace `exa-datatables` by `exa-datatables-bootstrap3` into `application.js` and `application.css` files.
+
+Another way is to load the good files directly from your GSP page or into your layout page:
+
+```gsp
+        <asset:stylesheet src="exa-datatables-bootstrap3" />
+        <asset:javascript src="exa-datatables-bootstrap3" />
+```
+
+After that, all you have to do is to add a little bit of HTML code to wrap the datatable you want to style with Twitter Bootstrap:
+
+```gsp
+    <div class="dataTables_wrapper">
+        <exa:datatable id="table" data="${data}" columns="..." class="table-striped table-bordered">
+            ...
+        </exa:datatable>
+    </div>
+```
+
 <p align="right"><a href="#Top">Top</a></p>
 <a name="changelog"></a>
 ##CHANGE LOG
@@ -209,6 +233,7 @@ Some tips about the code above :
 ##ROADMAP
 
 Better integration with ajax data loading, and some of DataTables extensions and plugins: Internationalisation, Scroller, ...
+
 If you need another features, please fill an issue on Github!
 
 <p align="right"><a href="#Top">Top</a></p>
