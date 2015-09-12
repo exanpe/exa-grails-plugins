@@ -4,6 +4,7 @@
 
 * [Introduction](#intro)
 * [Features](#features)
+* [Plugin configuration](#configuration)
 * [Changelog](#changelog)
 * [Roadmap](#roadmap)
 * [License](#license)
@@ -195,6 +196,18 @@ grails.plugin.exa.sec.redirects.map = ['http://www.yahoo.Fr']
 ```
 
 > Session is invalidated by default. Set flash.keepSession to true to bypass invalidation
+
+<p align="right"><a href="#Top">Top</a></p>
+<a name="configuration"></a>
+##Plugin configuration
+
+The plugin is autonomous. Include it as a dependency in your BuildConfig.groovy file :
+
+```groovy
+    plugins {
+        compile ":exa-security:X.Y.Z"
+    }
+```
 
 <p align="right"><a href="#Top">Top</a></p>
 <a name="changelog"></a>
