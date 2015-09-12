@@ -58,7 +58,7 @@ grails.plugin.exa.sec.headers.server="secret"
 
 Set the "X-Frame-Options" response header
 
-To enable, declare in Config.groovy with the desired value (see [https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet](OWASP description) for more information
+To enable, declare in Config.groovy with the desired value (see [OWASP description](https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet) for more information
 ```
 grails.plugin.exa.sec.headers.xframe="DENY"
 ```
