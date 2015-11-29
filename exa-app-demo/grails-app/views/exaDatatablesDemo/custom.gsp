@@ -8,29 +8,18 @@
 <body>
     <h1>Custom Datatable</h1>
 
-    <exa:datatable id="table2" data="${data}" columns="arrondissement adresse nom_du_cafe" auto="false">
-        <thead>
-        <tr>
-            <th><g:message code="demo.arrondissement.label" /></th>
-            <th><g:message code="demo.adresse.label" /></th>
-            <th><g:message code="demo.nom_du_cafe.label" /></th>
-            <th><g:message code="demo.actions.label" default="Actions" /></th>
-        </tr>
-        </thead>
+    <exa:datatable id="table" items="${persons}" include="firstName, lastname, age, sex" hidden="sex" add="gender">
+        <exa:customColumn name="gender">
+            <button name='alert' class='btn-alert'>gender</button>
+        </exa:customColumn>
     </exa:datatable>
 
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function() {
-            var datatable = Exa.Datatable.getDatatable('table2');
-            var optionColumn = { "data": null,
-                "defaultContent": "<button name='alert' class='btn-alert'>alert</button>"
-            };
-            datatable.addColumn(optionColumn);
-            datatable.render();
-
-            $('#table2 tbody').on('click', '.btn-alert', function () {
+            var datatable = Exa.Datatable.getDatatable('table');
+            $('#table tbody').on('click', '.btn-alert', function () {
                 var data = datatable.getInstance().row($(this).parents('tr')).data();
-                alert("Coffee price: " + data['prix_comptoir']);
+                alert("Gender: " + data['sex']);
             });
         });
     </script>

@@ -11,12 +11,14 @@ class TagLibUtils {
      * @param item              Current iterator item
      * @param toInclude         Columns to include
      * @param toExclude         Columns to exclude
+     * @param toHide            Columns to hide
      * @param extraColumns      Extra columns to add
+     * @param order             The order of the columns
      * @return
      */
-    static List<String> computeColumns(Object item, String toInclude, String toExclude, String extraColumns) {
+    static List<String> computeColumns(Object item, String toInclude, String toExclude, String toHide, String extraColumns, String order) {
         ColumnsBuilder builder = new ColumnsBuilder()
-        builder.from(item).include(toInclude).exclude(toExclude).add(extraColumns)
+        builder.from(item).include(toInclude).exclude(toExclude).hidden(toHide).add(extraColumns).reorder(order)
         return builder.build()
     }
 

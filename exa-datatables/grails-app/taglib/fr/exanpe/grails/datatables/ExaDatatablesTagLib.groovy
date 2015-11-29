@@ -33,6 +33,8 @@ class ExaDatatablesTagLib {
      * @attr hidden List of property names (case-insensitive) to include to the data model but not to display.
      *              Useful when you want to have access to a given property but not display this property ('id' for
      *              example)
+     * @attr reorder  List of property names (case-insensitive) indicating the order in which the columns should be
+     *                presented. Could be the beginning or the full list of columns.
      * @attr class CSS classes to apply
      * @attr filtering Enable or disable table filtering (default true)
      * @attr ordering  Enable or disable column ordering (default true)
@@ -55,12 +57,14 @@ class ExaDatatablesTagLib {
         def include = attrs.remove('include')
         def exclude = attrs.remove('exclude')
         if (include && exclude) throwTagError("Tag [datatable] attributes [include] and [exclude] can't be used together")
-        def columns = Utils.computeColumns(items[0], include, exclude, attrs.remove('add'))
-        def hiddenColumns = Utils.asList(attrs.remove('hidden'))
+
+        def hidden = attrs.remove('hidden')
+        def hiddenList = Utils.asList(hidden)
+        def columns = Utils.computeColumns(items[0], include, exclude, hidden, attrs.remove('add'), attrs.remove('reorder'))
 
         DatatableModel model = beforeRender(columns)
         items.eachWithIndex { item, index ->
-            def row = TagLibUtils.addDatatableModelRow(item, columns, hiddenColumns)
+            def row = TagLibUtils.addDatatableModelRow(item, columns, hiddenList)
             beforeRenderRow(row, item, index)
             body()
             afterRenderRow(model, row)

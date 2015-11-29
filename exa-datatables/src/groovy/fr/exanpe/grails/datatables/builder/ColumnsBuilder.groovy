@@ -1,6 +1,7 @@
 package fr.exanpe.grails.datatables.builder
 
 import fr.exanpe.grails.datatables.util.TagLibUtils as Utils
+import org.codehaus.groovy.grails.web.taglib.exceptions.GrailsTagException
 
 /**
  * Builder used to compute list of columns to display into the datatable.
@@ -41,6 +42,22 @@ class ColumnsBuilder {
         return this
     }
 
+    ColumnsBuilder hidden(String columns) {
+        if (!columns) return this
+        def toHide = Utils.asList(columns)
+        def filtered = filter(toHide)
+        this.columns = (this.columns - filtered)
+        return this
+    }
+
+    ColumnsBuilder reorder(String columns) {
+        if (!columns) return this
+        def toReorder = Utils.asList(columns)
+        def filtered = filter(toReorder)
+        this.columns = filtered + (this.columns - filtered)
+        return this
+    }
+
     List<String> build() {
         return columns
     }
@@ -50,7 +67,7 @@ class ColumnsBuilder {
         filteredColumns.each {
             def index = columns*.toLowerCase().indexOf(it.toLowerCase())
             if (index < 0) {
-                throw new RuntimeException("Unknow column: " + it)
+                throw new GrailsTagException("Tag [datatable] error - Unknown column: " + it)
             }
             filtered << columns.get(index)
         }

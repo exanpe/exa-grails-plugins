@@ -7,15 +7,23 @@
 </head>
 <body>
     <h1>Datatables 1</h1>
+    <exa:datatable id="table1" items="${persons}" />
+    <br />
 
-    <exa:datatable id="table1" data="${data}" columns="arrondissement adresse nom_du_cafe">
-        <thead>
-        <tr>
-            <th><g:message code="demo.arrondissement.label" /></th>
-            <th><g:message code="demo.adresse.label" /></th>
-            <th><g:message code="demo.nom_du_cafe.label" /></th>
-        </tr>
-        </thead>
+    <h1>Datatables 2</h1>
+    <exa:datatable id="table2" items="${persons}" exclude="age" />
+    <br />
+
+    <h1>Datatables 3</h1>
+    <exa:datatable id="table3" items="${persons}" include="firstName, lastname, age" />
+    <br />
+
+    <h1>Datatables 4</h1>
+    <exa:datatable id="table4" items="${persons}" exclude="age" hidden="firstName,lastName" add="fullName" reorder="fullName username">
+        <exa:customHeader name="fullName" value="Fullname" />
+        <exa:customColumn name="fullName">
+            ${it.firstName} ${it.lastName}
+        </exa:customColumn>
     </exa:datatable>
 </body>
 </html>

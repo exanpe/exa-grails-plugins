@@ -9,14 +9,10 @@
     <h1>Datatables with Twitter Bootstrap 3</h1>
 
     <div class="dataTables_wrapper">
-        <exa:datatable id="table" data="${data}" columns="arrondissement adresse nom_du_cafe" class="table-striped table-bordered">
-            <thead>
-            <tr>
-                <th><g:message code="demo.arrondissement.label" /></th>
-                <th><g:message code="demo.adresse.label" /></th>
-                <th><g:message code="demo.nom_du_cafe.label" /></th>
-            </tr>
-            </thead>
+        <exa:datatable id="table" items="${persons}" include="firstName, lastname, age" add="company" class="table-striped table-bordered">
+            <exa:customColumn name="company">
+                <b>${it?.company?.name}</b>
+            </exa:customColumn>
         </exa:datatable>
     </div>
 </body>
