@@ -1,3 +1,5 @@
+import fr.exanpe.grails.datatables.marshaller.DatatableModelRowJsonMarshaller
+
 class ExaDatatablesGrailsPlugin {
     // the plugin version
     def version = "1.0.0-SNAPSHOT"
@@ -8,7 +10,8 @@ class ExaDatatablesGrailsPlugin {
         "grails-app/domain/**",
         "grails-app/controllers/**",
         "grails-app/services/**",
-        "grails-app/views/error.gsp"
+        "grails-app/views/error.gsp",
+        "src/groovy/fr/exanpe/grails/datatables/test/**"
     ]
 
     def title = "Exa Datatables Plugin" // Headline display name of the plugin
@@ -42,6 +45,7 @@ This plugin provides integration with DataTables (Table plug-in for jQuery).
     }
 
     def doWithSpring = {
+        DatatableModelRowJsonMarshaller.register()
     }
 
     def doWithDynamicMethods = { ctx ->

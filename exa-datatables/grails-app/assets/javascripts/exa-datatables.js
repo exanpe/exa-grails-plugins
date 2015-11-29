@@ -66,9 +66,9 @@ Exa.Datatable.prototype._init = function() {
 
     // Columns to display
     var columns = [];
-    _.each(_.words(this.columns, /[^,? ]+/g), function(word) {
+    _.each(JSON.parse(this.columns), function(it) {
         var column = {};
-        column.data = word;
+        column.data = it;
         columns.push(column);
     });
 
