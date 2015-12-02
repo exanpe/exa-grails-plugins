@@ -7,7 +7,7 @@ grails.project.target.level = 1.6
 grails.project.source.level = 1.6
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 
-grails.plugin.location."ExaDatatablesGrailsPlugin" = "/opt/projects/perso/exa-datatables"
+//grails.plugin.location."ExaDatatablesGrailsPlugin" = "/opt/projects/perso/exa-datatables"
 
 grails.project.fork = [
     // configure settings for compilation JVM, note that if you alter the Groovy version forked compilation is required
