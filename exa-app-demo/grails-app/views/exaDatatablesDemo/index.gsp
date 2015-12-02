@@ -39,7 +39,7 @@
     <br />
 
     <blockquote>
-        <p>You can choose to <code>include</code> or <code>exclude</code> only some columns. Column names are not case-sensitive and you can use " " or "," as separator field:</p>
+        <p>You can choose to <code>include</code> or <code>exclude</code> only some columns: column names are not case-sensitive ; separator field could be ' ' or ','.</p>
     </blockquote>
 
     <pre><code class="html">&lt;exa:datatable id="table3" items="&dollar;{persons}" exclude="age" /></code></pre>
@@ -52,13 +52,65 @@
     <exa:datatable id="table4" items="${persons}" include="firstName, lastname, age" />
     <br />
 
-    <h2>Datatables 4</h2>
-    <exa:datatable id="table5" items="${persons}" exclude="age" hidden="firstName,lastName" add="fullName" reorder="fullName username">
+    <h1>Advanced settings</h1>
+
+    <p>Suppose now that we have to display a more complex data structure with some object as part as <code>Person</code> properties: <br /><p>
+    <pre><code class="java">class Person {
+    String firstName
+    String lastName
+    String email
+    String username
+    Person.Sex sex
+    Integer age
+    Company company
+    }
+
+class Company {
+    String name
+    String domain
+}
+</code></pre>
+
+    <blockquote>
+        <p>Rendering of <code>company</code> column with <code>customColumn</code> nested tag: </p>
+    </blockquote>
+
+    <pre><code class="html">&lt;exa:datatable id="table5" items="&dollar;{persons}" include="firstName lastname age company">
+  &lt;exa:customColumn name="company">
+    &lt;b>&dollar;{it?.company?.name}&lt;/b>
+  &lt;/exa:customColumn>
+&lt;/exa:datatable>
+</code></pre>
+
+    <exa:datatable id="table5" items="${persons2}" include="firstName lastname age company">
+        <exa:customColumn name="company">
+            <b>${it?.company?.name}</b>
+        </exa:customColumn>
+    </exa:datatable>
+
+    <blockquote>
+        <p>You often need to <code>add</code> extra column, sometimes with properties that you don't want to display elsewhere (<code>hidden</code> parameter) and also <code>reorder</code> the beginning or the entire list of properties.<br />
+        Look at the nested tag <code>customHeader</code> too, that allow to change the label of the column header.
+        </p>
+    </blockquote>
+
+    <pre><code class="html">&lt;exa:datatable id="table6" items="&dollar;{persons}" exclude="age company" hidden="firstName,lastName" add="fullName" reorder="fullName username">
+  &lt;exa:customHeader name="fullName" value="Fullname" />
+  &lt;exa:customColumn name="fullName">
+    &dollar;{it.firstName} &dollar;{it.lastName}
+  &lt;/exa:customColumn>
+&lt;/exa:datatable>
+</code></pre>
+
+    <exa:datatable id="table6" items="${persons}" exclude="age" hidden="firstName,lastName" add="fullName" reorder="fullName username">
         <exa:customHeader name="fullName" value="Fullname" />
         <exa:customColumn name="fullName">
             ${it.firstName} ${it.lastName}
         </exa:customColumn>
     </exa:datatable>
     <br />
+
+    <h1>Full control</h1>
+    <p>To complete</p>
 </body>
 </html>

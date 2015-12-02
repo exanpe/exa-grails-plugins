@@ -8,6 +8,14 @@ import org.jfairy.producer.person.PersonProperties
 class ExaDatatablesDemoController {
 
     def index() {
+        [persons: getSimplePersons(), persons2: getPersons()]
+    }
+
+    def custom() {
+        [persons: getPersons()]
+    }
+
+    private def getSimplePersons() {
         Fairy fairy = Fairy.create();
         List<SimplePerson> persons = []
         15.times {
@@ -15,15 +23,7 @@ class ExaDatatablesDemoController {
             persons << new SimplePerson(firstName: p.firstName(), lastName: p.lastName(), email: p.email(),
                     username: p.username(), sex: p.sex(), age: p.age())
         }
-        [persons: persons]
-    }
-
-    def custom() {
-        [persons: getPersons()]
-    }
-
-    def bootstrap() {
-        [persons: getPersons()]
+        return persons
     }
 
     private def getPersons() {
@@ -31,7 +31,7 @@ class ExaDatatablesDemoController {
         Company company = fairy.company();
         Company company2 = fairy.company();
         List<Person> persons = []
-        (0..20).each {
+        20.times {
             Company c = it % 2 == 0 ? company2 : company
             persons << fairy.person(PersonProperties.withCompany(c))
         }
