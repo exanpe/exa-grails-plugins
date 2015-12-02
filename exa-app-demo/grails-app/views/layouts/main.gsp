@@ -12,14 +12,50 @@
 		<link rel="shortcut icon" href="${assetPath(src: 'favicon.ico')}" type="image/x-icon">
 		<link rel="apple-touch-icon" href="${assetPath(src: 'apple-touch-icon.png')}">
 		<link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">
-  		<asset:stylesheet src="application.css"/>
+		<asset:stylesheet src="highlight/styles/default.css" />
+		<asset:stylesheet src="highlight/styles/mono-blue.css" />
+  		<asset:stylesheet src="theme.less"/>
 		<asset:javascript src="application.js"/>
+		<asset:javascript src="highlight/highlight.pack.js" />
 		<g:layoutHead/>
 	</head>
 	<body>
-		<div id="grailsLogo" role="banner"><a href="http://grails.org"><asset:image src="grails_logo.png" alt="Grails"/></a></div>
-		<g:layoutBody/>
-		<div class="footer" role="contentinfo"></div>
-		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
+
+		<g:render template="/tpl/menu/header" />
+
+		<div class="container-fluid">
+
+			<!-- Header title -->
+			<div class="section-header">
+				<div class="row">
+					<div class="page-header">
+						<h1><g:layoutTitle default="My Title"/></h1>
+					</div>
+				</div>
+			</div>
+
+			<div class="main">
+
+				<div class="row">
+					<!-- Main content -->
+					<div class="content col-lg-12">
+						<g:if test='${flash.message}'>
+							<div class='alert alert-${flash.status ?: "info"}'>
+								<g:message code="${flash.message}" />
+							</div>
+						</g:if>
+						<g:layoutBody/>
+					</div>
+				</div>
+
+			</div> <!-- /.main -->
+
+			<g:render template="/tpl/menu/footer" />
+
+		</div> <!-- /.container-fluid -->
+
+		<g:javascript>
+			hljs.initHighlighting();
+		</g:javascript>
 	</body>
 </html>

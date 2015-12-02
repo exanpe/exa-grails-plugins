@@ -116,6 +116,11 @@ log4j.main = {
            'net.sf.ehcache.hibernate'
 }
 
+// Twitter Bootstrap and LESS compiler
+grails.assets.less.compiler = 'less4j'
+grails.assets.plugin."twitter-bootstrap".excludes = ["**/*.less"]
+grails.assets.plugin."twitter-bootstrap".includes = ["bootstrap.less"]
+
 //conf override
 grails{
     plugin{
