@@ -95,7 +95,7 @@ class Company {
     </blockquote>
 
     <pre><code class="html">&lt;exa:datatable id="table6" items="&dollar;{persons}" exclude="age company" hidden="firstName,lastName" add="fullName" reorder="fullName username">
-  &lt;exa:customHeader name="fullName" value="Fullname" />
+  &lt;exa:customHeader name="fullName" value="My Full Name" />
   &lt;exa:customColumn name="fullName">
     &dollar;{it.firstName} &dollar;{it.lastName}
   &lt;/exa:customColumn>
@@ -103,7 +103,7 @@ class Company {
 </code></pre>
 
     <exa:datatable id="table6" items="${persons}" exclude="age" hidden="firstName,lastName" add="fullName" reorder="fullName username">
-        <exa:customHeader name="fullName" value="Fullname" />
+        <exa:customHeader name="fullName" value="My Full Name" />
         <exa:customColumn name="fullName">
             ${it.firstName} ${it.lastName}
         </exa:customColumn>

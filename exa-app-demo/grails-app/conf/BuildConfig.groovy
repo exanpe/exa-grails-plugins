@@ -7,7 +7,7 @@ grails.project.target.level = 1.6
 grails.project.source.level = 1.6
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 
-grails.plugin.location."ExaDatatablesGrailsPlugin" = "/opt/projects/perso/exa-datatables"
+// grails.plugin.location."ExaDatatablesGrailsPlugin" = "/opt/projects/perso/exa-datatables"
 
 grails.project.fork = [
     // configure settings for compilation JVM, note that if you alter the Groovy version forked compilation is required
@@ -54,6 +54,8 @@ grails.project.dependency.resolution = {
         // runtime 'org.postgresql:postgresql:9.3-1101-jdbc41'
         test "org.grails:grails-datastore-test-support:1.0.2-grails-2.4"
         compile "org.jfairy:jfairy:0.3.0"
+        // Fix snakeyaml classpath conflict with jfairy
+        build "org.yaml:snakeyaml:jar:1.16"
     }
 
     plugins {
@@ -71,7 +73,7 @@ grails.project.dependency.resolution = {
         runtime ":jquery:1.11.1"
 
         compile ":exa-security:1.0.0-SNAPSHOT"
-        // compile ":exa-datatables:1.0.0-SNAPSHOT"
+        compile ":exa-datatables:1.0.0-SNAPSHOT"
 
         // Twitter Bootstrap and Less
         compile ":less-asset-pipeline:1.7.0"

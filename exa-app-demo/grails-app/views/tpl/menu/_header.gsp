@@ -1,4 +1,4 @@
-<div class="navbar navbar-default navbar-fixed-top">
+<div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header pull-left">
             <g:link uri="/" class="navbar-brand" target="_top">exa-grails-plugins for Grails</g:link>
