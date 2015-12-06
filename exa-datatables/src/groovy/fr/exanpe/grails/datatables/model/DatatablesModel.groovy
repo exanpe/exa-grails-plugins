@@ -13,7 +13,7 @@ class DatatableModel {
 
     void updateHeader(String name, String value) {
         def headerIdx = headers.findIndexOf { it.name == name }
-        if (headerIdx) {
+        if (headerIdx >= 0) {
             headers?.get(headerIdx)?.isCustom = true
             headers?.get(headerIdx)?.value = value
         }
