@@ -29,7 +29,7 @@ So, most of the important features are enabled by default like:
 
 Of course, this plugin provides a way to use all of existing features of DataTables.net.
 
-> The full DataTables jQuery plugin documentation is available here: [DataTables.net](https://www.datatables.net/).
+> The full documentation of the DataTables jQuery plugin is available here: [DataTables.net](https://www.datatables.net/).
 
 <p align="right"><a href="#Top">Top</a></p>
 <a name="configuration"></a>
@@ -65,35 +65,54 @@ Stylesheet `grails-app/assets/stylesheets/application.css`:
 */
 ```
 
+In case you would integrate this plugin with your Twitter Bootstrap 3 look and feel, you must use the below configuration instead:
+
+Javascript `grails-app/assets/javascripts/application.js`:
+```javascript
+//= require jquery
+//= require bootstrap
+//= require exa-datatables-bootstrap3
+...
+```
+
+Stylesheet `grails-app/assets/stylesheets/application.css`:
+```
+/*
+...
+*= require bootstrap
+*= require exa-datatables-bootstrap3
+*= require main
+...
+*/
+```
+
 <p align="right"><a href="#Top">Top</a></p>
 <a name="taglib"></a>
 ##Taglib
 
-The tag must be used through the namespace `exa` as follow:
+The tag must be used through the namespace `exa` :
 
 ```gsp
- <exa:datatable id="table1" data="..." columns="...">
-     <thead>
-     <tr>
-        ...
-     </tr>
-     </thead>
- </exa:datatable>
+ <exa:datatable id="table1" items="${items}" />
 ```
 
 Tag attributes:
 
-| Attribute | Description                                                                                                                                                                             | Default value |
-|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------:|
-| id        | **Required** - Unique client-side ID of the datatable                                                                                                                                   |               |
-| data      | **Required** - JSON datas to display                                                                                                                                                    |               |
-| columns   | Name of data columns to display                                                                                                                                                         |               |
-| class     | CSS classes to apply to the table                                                                                                                                                       |               |
-| filtering | Enable or disable table filtering                                                                                                                                                       |      true     |
-| ordering  | Enable or disable column ordering                                                                                                                                                       |      true     |
-| paging    | Enable or disable paging                                                                                                                                                                |      true     |
-| infos     | Enable or disable table information display field                                                                                                                                       |      true     |
-| auto      | Enable or disable auto rendering of the datatable.  Used to take control over Datatable settings or customization.  If false, you have to call render(options) yourself on client-side. |      true     |
+| Attribute | Description                                                                                                                                                                                               | Default value |
+|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------:|
+| id        | **Required** - Unique client-side ID of the datatable.                                                                                                                                                    |               |
+| items     | **Required** - List of items intances to display.                                                                                                                                                         |               |
+| include   | List of property names (not case-sensitive) to be retained from each item.                                                                                                                                |               |
+| exclude   | List of property names (not case-sensitive) to be removed from each item.                                                                                                                                 |               |
+| add       | Extra columns to display for each item. Cells for added columns will be blank by default, unless you provide a custom **customColumn** nested tag for each of them.                                       |               |
+| hidden    | List of property names (not case-sensitive) to include in the data model but not to display directly. Useful when you want to have access to a given property inside a **customColumn** nested tag.       |               |
+| reorder   | List of property names (not case-sensitive) indicating the order in which the columns should be presented. Could be the beginning or the full list of columns.                                            |               |
+| class     | CSS classes to apply to the table.                                                                                                                                                                        |               |
+| filtering | Enable or disable table filtering.                                                                                                                                                                        |      true     |
+| ordering  | Enable or disable column ordering.                                                                                                                                                                        |      true     |
+| paging    | Enable or disable paging.                                                                                                                                                                                 |      true     |
+| infos     | Enable or disable table information display field.                                                                                                                                                        |      true     |
+| auto      | **EXPERIMENTAL** Enable or disable auto rendering of the datatable.  Used to take control over Datatable settings or customization.  If false, you have to call render(options) yourself on client-side.  |      true     |
 
 <p align="right"><a href="#Top">Top</a></p>
 <a name="usage"></a>
@@ -102,15 +121,22 @@ Tag attributes:
 #### Simple case
 
 In the following case, we show the simplest way to use Datatable tag.
-
-Only columns col1, col2 and col3 from data, provided as JSON by a controller, are used.
-
 DataTable is displayed with default settings: filtering, ordering, paging and table infos.
 
 `DemoController.groovy`
 ```groovy
     def index() {
-        [data: getMyData() as JSON]
+        List<Person> persons = ...
+        [items: persons]
+    }
+
+    class Person {
+        String firstName
+        String lastName
+        String email
+        String username
+        Person.Sex sex
+        Integer age
     }
 ```
 
@@ -124,103 +150,53 @@ DataTable is displayed with default settings: filtering, ordering, paging and ta
 </head>
 <body>
 
-    <exa:datatable id="table1" data="${data}" columns="col1 col2 col3">
-        <thead>
-        <tr>
-            <th><g:message code="col1.label" default="Col 1" /></th>
-            <th><g:message code="col2.label" default="Col 2" /></th>
-            <th><g:message code="col3.label" default="Col 3" /></th>
-        </tr>
-        </thead>
-    </exa:datatable>
+    <exa:datatable id="table1" items="${persons}" />
 
 </body>
 </html>
 ```
 
-### Custom table
+### Customize the rendering table
 
-Sometimes, you need more than simple the data to display, for example, an extra column to display custom actions.
-Below, we give you some hints to achieve a such customization:
+Sometimes, you need more than simple the data to display, for example, include or exclude only some columns, add extra columns,
+or simply customize a column label.
+Below, an example and some hints to achieve such customization:
 
-`DemoController.groovy`
-```groovy
-    def custom() {
-        [data: getMyData() as JSON]
-    }
-```
-
-`custom.gsp`
+`index.gsp`
 ```gsp
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="layout" content="main" />
-    <title>Custom table</title>
-</head>
-<body>
-
-    <exa:datatable id="table2" data="${data}" columns="arrondissement adresse nom_du_cafe" auto="false">
-        <thead>
-        <tr>
-            <th><g:message code="demo.arrondissement.label" /></th>
-            <th><g:message code="demo.adresse.label" /></th>
-            <th><g:message code="demo.nom_du_cafe.label" /></th>
-            <th><g:message code="demo.actions.label" default="Actions" /></th>
-        </tr>
-        </thead>
+    <exa:datatable id="table2" items="${persons}" exclude="age" hidden="firstName,lastName,sex" add="fullName, gender" reorder="fullName username">
+        <exa:customHeader name="fullName" value="My Full Name" />
+        <exa:customColumn name="fullName">
+            ${it.firstName} ${it.lastName}
+        </exa:customColumn>
+        <exa:customColumn name="gender">
+            <button name='alert' class='btn-alert'>gender</button>
+        </exa:customColumn>
     </exa:datatable>
 
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function() {
             var datatable = Exa.Datatable.getDatatable('table2');
-            var optionColumn = { "data": null,
-                "defaultContent": "<button name='alert' class='btn-alert'>Price</button>"
-            };
-            datatable.addColumn(optionColumn);
-            datatable.render();
-
-            $('#table2 tbody').on('click', '.btn-alert', function () {
+            $('#table tbody').on('click', '.btn-alert', function () {
                 var data = datatable.getInstance().row($(this).parents('tr')).data();
-                alert("Coffee price: " + data['prix_comptoir']);
+                alert("Gender: " + data['sex']);
             });
         });
     </script>
-
 </body>
 </html>
 ```
 
 Some tips about the code above :
-* Disable the auto-rendering with attribute `auto="false"`
-* Add an extra row into the thead of the table for the 'Action' column
-* Use the helper function `Exa.Datatable.getDatatable` to get the JS instance of the datatable linked to the client ID 'table2'
-* Call the `render()` function explicitly
-* Notice the usage `getInstance()` that allow to get the real DataTables.net component, wrapped by our taglib.  Basically, this function gives you acces to the power of all the DataTables native features.
+* Collect all the *Person* class properties, minus age property (see `exclude` parameter).
+* Do not display directly *firstName*, *lastName*, and *sex* properties (see `hidden` parameter). Although not directly displayed, these properties fill the data model of the datatable and can thus be used within the `customColumn` nested tag.
+* Add extra columns *fullName* and *gender* with `add` parameter.
+* Change the default order of columns with `reorder` parameter.
+* Last, but not least, look at the usage of `customHeader` and `customColumn` nested tags that allow to change the label and the content of some columns.
 
-### Twitter Bootstrap 3
+Finally, notice the usage of helper function `Exa.Datatable.getDatatable` to get the JS instance of the datatable linked to the client ID 'table2' and the usage of `getInstance()` that allow to get the real DataTables.net component, wrapped by our taglib.
 
-You love Twitter Bootstrap? So do we.
-
-DataTables.net helps to integrate seamlessly with Twitter Bootstrap in order to keep a consistence with the look and feel of your Bootstrap site.
-Once you have loaded Twitter Bootstrap resources in your app, replace `exa-datatables` by `exa-datatables-bootstrap3` into `application.js` and `application.css` files.
-
-Another way is to load the good files directly from your GSP page or into your layout page:
-
-```gsp
-        <asset:stylesheet src="exa-datatables-bootstrap3" />
-        <asset:javascript src="exa-datatables-bootstrap3" />
-```
-
-After that, all you have to do is to add a little bit of HTML code to wrap the datatable you want to style with Twitter Bootstrap:
-
-```gsp
-    <div class="dataTables_wrapper">
-        <exa:datatable id="table" data="${data}" columns="..." class="table-striped table-bordered">
-            ...
-        </exa:datatable>
-    </div>
-```
+Basically, this function gives you a full access to all the native and powerfull features of DataTables jQuery plug-in.
 
 <p align="right"><a href="#Top">Top</a></p>
 <a name="changelog"></a>
@@ -232,7 +208,7 @@ After that, all you have to do is to add a little bit of HTML code to wrap the d
 <a name="roadmap"></a>
 ##ROADMAP
 
-Better integration with ajax data loading, and some of DataTables extensions and plugins: Internationalisation, Scroller, ...
+Better integration with ajax data loading, and some other features of DataTables extensions and plugins.
 
 If you need another features, please fill an issue on Github!
 
