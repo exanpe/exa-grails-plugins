@@ -10,6 +10,8 @@ Most of the important features are enabled by default like:
 * ...
 
 [Link to documentation and description](https://github.com/exanpe/exa-grails-plugins/tree/master/exa-datatables)
+[Link to the live Demo](http://grails-exanpe.rhcloud.com/exaDatatablesDemo/index)
+
 
 ## [EXA-SECURITY](https://github.com/exanpe/exa-grails-plugins/tree/master/exa-security)
 
@@ -22,3 +24,4 @@ This plugin provides features to enhance Grails 2.4.x security, as well as few o
 * **Redirect** engine
 
 [Link to documentation and description](https://github.com/exanpe/exa-grails-plugins/tree/master/exa-security)
+[Link to the live Demo](http://grails-exanpe.rhcloud.com/exaSecurityDemo/index)

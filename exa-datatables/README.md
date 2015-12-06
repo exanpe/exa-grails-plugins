@@ -156,7 +156,7 @@ DataTable is displayed with default settings: filtering, ordering, paging and ta
 </html>
 ```
 
-### Customize the rendering table
+### Customize the rendering
 
 Sometimes, you need more than simple the data to display, for example, include or exclude only some columns, add extra columns,
 or simply customize a column label.
