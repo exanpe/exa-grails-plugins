@@ -164,27 +164,25 @@ Below, an example and some hints to achieve such customization:
 
 `index.gsp`
 ```gsp
-    <exa:datatable id="table2" items="${persons}" exclude="age" hidden="firstName,lastName,sex" add="fullName, gender" reorder="fullName username">
-        <exa:customHeader name="fullName" value="My Full Name" />
-        <exa:customColumn name="fullName">
-            ${it.firstName} ${it.lastName}
-        </exa:customColumn>
-        <exa:customColumn name="gender">
-            <button name='alert' class='btn-alert'>gender</button>
-        </exa:customColumn>
-    </exa:datatable>
+<exa:datatable id="table2" items="${persons}" exclude="age" hidden="firstName,lastName,sex" add="fullName, gender" reorder="fullName username">
+    <exa:customHeader name="fullName" value="My Full Name" />
+    <exa:customColumn name="fullName">
+        ${it.firstName} ${it.lastName}
+    </exa:customColumn>
+    <exa:customColumn name="gender">
+        <button name='alert' class='btn-alert'>gender</button>
+    </exa:customColumn>
+</exa:datatable>
 
-    <script type="text/javascript" charset="utf-8">
-        $(document).ready(function() {
-            var datatable = Exa.Datatable.getDatatable('table2');
-            $('#table tbody').on('click', '.btn-alert', function () {
-                var data = datatable.getInstance().row($(this).parents('tr')).data();
-                alert("Gender: " + data['sex']);
-            });
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+        var datatable = Exa.Datatable.getDatatable('table2');
+        $('#table tbody').on('click', '.btn-alert', function () {
+            var data = datatable.getInstance().row($(this).parents('tr')).data();
+            alert("Gender: " + data['sex']);
         });
-    </script>
-</body>
-</html>
+    });
+</script>
 ```
 
 Some tips about the code above :
