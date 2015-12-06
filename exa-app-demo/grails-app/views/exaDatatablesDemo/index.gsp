@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta name="layout" content="main" />
-    <title>exa-datatables Demo</title>
+    <title>exa-datatable Demo</title>
 </head>
 <body>
 

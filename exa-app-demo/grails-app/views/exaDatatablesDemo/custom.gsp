@@ -8,7 +8,11 @@
 <body>
     <h1>Custom Datatable</h1>
 
-    <exa:datatable id="table" items="${persons}" include="firstName, lastname, age, sex" hidden="sex" add="gender">
+    <exa:datatable id="table" items="${persons}" exclude="age" hidden="firstName,lastName,sex" add="fullName, gender" reorder="fullName username">
+        <exa:customHeader name="fullName" value="My Full Name" />
+        <exa:customColumn name="fullName">
+            ${it.firstName} ${it.lastName}
+        </exa:customColumn>
         <exa:customColumn name="gender">
             <button name='alert' class='btn-alert'>gender</button>
         </exa:customColumn>
