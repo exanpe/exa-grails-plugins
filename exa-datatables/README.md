@@ -90,7 +90,9 @@ Stylesheet `grails-app/assets/stylesheets/application.css`:
 <a name="taglib"></a>
 ##Taglib
 
-The tag must be used through the namespace `exa` :
+All the tags must be used through the namespace `exa`.
+
+### **datatable** Tag
 
 ```gsp
  <exa:datatable id="table1" items="${items}" />
@@ -113,6 +115,39 @@ Tag attributes:
 | paging    | Enable or disable paging.                                                                                                                                                                                 |      true     |
 | infos     | Enable or disable table information display field.                                                                                                                                                        |      true     |
 | auto      | **EXPERIMENTAL** Enable or disable auto rendering of the datatable.  Used to take control over Datatable settings or customization.  If false, you have to call render(options) yourself on client-side.  |      true     |
+
+### **customHeader** nesteg tag
+
+```gsp
+ <exa:datatable id="table1" items="${persons}">
+    <exa:customHeader name="fullName" value="${message(code: 'demo.fullName.label')}" />
+ </exa:datatable>
+```
+
+Tag attributes:
+
+| Attribute | Description                                                                                                                                                                                               | Default value |
+|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------:|
+| name      | **Required** - The name of the property to customize.                                                                                                                                                     |               |
+| value     | **Required** - The label value we want to set (could be a literal or a i18n message).                                                                                                                     |               |
+
+### **customColumn** nesteg tag
+
+```gsp
+ <exa:datatable id="table1" items="${persons}">
+   <exa:customColumn name="fullName">
+     ${it.firstName} ${it.lastName}
+   </exa:customColumn>
+ </exa:datatable>
+```
+
+Tag attribute:
+
+| Attribute | Description                                                                                                                                                                                               | Default value |
+|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------:|
+| name      | **Required** - The name of the property to customize.                                                                                                                                                     |               |
+
+To notice: you have access to the current iterator value through `it` variable within the body of the tag.
 
 <p align="right"><a href="#Top">Top</a></p>
 <a name="usage"></a>
