@@ -9,7 +9,7 @@ Most of the important features are enabled by default like:
 * Column ordering,
 * ...
 
-[Link to documentation and description](https://github.com/exanpe/exa-grails-plugins/tree/master/exa-datatables)
+[Link to documentation and description](https://github.com/exanpe/exa-grails-plugins/tree/master/exa-datatables/README.md)
 
 [Link to the live Demo](http://grails-exanpe.rhcloud.com/exaDatatablesDemo/index)
 
@@ -24,6 +24,6 @@ This plugin provides features to enhance Grails 2.4.x security, as well as few o
 * Advanced **cookie** configuration
 * **Redirect** engine
 
-[Link to documentation and description](https://github.com/exanpe/exa-grails-plugins/tree/master/exa-security)
+[Link to documentation and description](https://github.com/exanpe/exa-grails-plugins/tree/master/exa-security/README.md)
 
 [Link to the live Demo](http://grails-exanpe.rhcloud.com/exaSecurityDemo/index)
