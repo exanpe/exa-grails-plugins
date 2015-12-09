@@ -28,9 +28,11 @@
 			<!-- Header title -->
 			<div class="section-header">
 				<div class="row">
-					<div class="page-header">
-						<h1><g:layoutTitle default="My Title"/></h1>
-					</div>
+                    <g:if test="${controllerName}">
+                        <div class="page-header">
+                            <h1><g:layoutTitle default="My Title"/></h1>
+                        </div>
+                    </g:if>
 				</div>
 			</div>
 
