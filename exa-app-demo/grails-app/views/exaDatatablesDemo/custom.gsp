@@ -9,7 +9,7 @@
     <h1>Custom Datatable</h1>
 
     <exa:datatable id="table" items="${persons}" exclude="age" hidden="firstName,lastName,sex" add="fullName, gender" reorder="fullName username">
-        <exa:customHeader name="fullName" value="My Full Name" />
+        <exa:customHeader name="fullName" value="${message(code: 'demo.fullName.label')}" />
         <exa:customColumn name="fullName">
             ${it.firstName} ${it.lastName}
         </exa:customColumn>
