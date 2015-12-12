@@ -237,6 +237,8 @@ Basically, this function gives you a full access to all the native and powerfull
 <a name="roadmap"></a>
 ##ROADMAP
 
+Compatibility with Grails 3.
+
 Better integration with ajax data loading, and some other features of DataTables extensions and plugins.
 
 If you need another features, please fill an issue on Github!
