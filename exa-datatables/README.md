@@ -16,6 +16,8 @@
 
 This plugin provides integration with DataTables (Table plug-in for jQuery).
 
+A live demo of the taglib is available [here](http://grails-exanpe.rhcloud.com/exaDatatablesDemo/index).
+
 <p align="right"><a href="#Top">Top</a></p>
 <a name="features"></a>
 ##FEATURES
@@ -46,7 +48,7 @@ The plugin depends on both jQuery and asset-pipeline, so include them as depende
 ```
 
 Then, thanks to the Asset Pipeline plugin, you just have to reference the following files to load the static
-resources needed by DataTables :
+resources needed by DataTables:
 
 Javascript `grails-app/assets/javascripts/application.js`:
 ```javascript
@@ -103,7 +105,7 @@ Tag attributes:
 | Attribute | Description                                                                                                                                                                                               | Default value |
 |-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------:|
 | id        | **Required** - Unique client-side ID of the datatable.                                                                                                                                                    |               |
-| items     | **Required** - List of items intances to display.                                                                                                                                                         |               |
+| items     | **Required** - The collection of objects to iterate over.                                                                                                                                                 |               |
 | include   | List of property names (not case-sensitive) to be retained from each item.                                                                                                                                |               |
 | exclude   | List of property names (not case-sensitive) to be removed from each item.                                                                                                                                 |               |
 | add       | Extra columns to display for each item. Cells for added columns will be blank by default, unless you provide a custom **customColumn** nested tag for each of them.                                       |               |
@@ -129,7 +131,7 @@ Tag attributes:
 | Attribute | Description                                                                                                                                                                                               | Default value |
 |-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------:|
 | name      | **Required** - The name of the property to customize.                                                                                                                                                     |               |
-| value     | **Required** - The label value we want to set (could be a literal or a i18n message).                                                                                                                     |               |
+| value     | **Required** - The label value to set (could be a literal or a i18n message).                                                                                                                             |               |
 
 ### **customColumn** nesteg tag
 
@@ -145,7 +147,7 @@ Tag attribute:
 
 | Attribute | Description                                                                                                                                                                                               | Default value |
 |-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------:|
-| name      | **Required** - The name of the property to customize.                                                                                                                                                     |               |
+| name      | **Required** - The name of the property column to customize.                                                                                                                                              |               |
 
 To notice: you have access to the current iterator value through `it` variable within the body of the tag.
 
@@ -155,7 +157,7 @@ To notice: you have access to the current iterator value through `it` variable w
 
 #### Simple case
 
-In the following case, we show the simplest way to use Datatable tag.
+In the following sample, we show the simplest way to use `datatable` tag.
 DataTable is displayed with default settings: filtering, ordering, paging and table infos.
 
 `DemoController.groovy`
@@ -193,8 +195,8 @@ DataTable is displayed with default settings: filtering, ordering, paging and ta
 
 ### Customize the rendering
 
-Sometimes, you need more than simple the data to display, for example, include or exclude only some columns, add extra columns,
-or simply customize a column label.
+Sometimes, you need more than just the data to display, for example, include or exclude only some columns, add extra columns,
+or simply customize a column header label.
 Below, an example and some hints to achieve such customization:
 
 `index.gsp`
@@ -220,14 +222,14 @@ Below, an example and some hints to achieve such customization:
 </script>
 ```
 
-Some tips about the code above :
-* Collect all the *Person* class properties, minus age property (see `exclude` parameter).
-* Do not display directly *firstName*, *lastName*, and *sex* properties (see `hidden` parameter). Although not directly displayed, these properties fill the data model of the datatable and can thus be used within the `customColumn` nested tag.
-* Add extra columns *fullName* and *gender* with `add` parameter.
-* Change the default order of columns with `reorder` parameter.
+Some tips about the code above:
+* Collect all the *Person* class properties, minus age property (`exclude` parameter).
+* Do not display directly *firstName*, *lastName*, and *sex* properties (`hidden` parameter). Although not directly displayed, these properties fill the data model of the datatable and can thus be used within the `customColumn` nested tag.
+* Add extra columns *fullName* and *gender* (`add` parameter).
+* Change the default order of columns (`reorder` parameter).
 * Last, but not least, look at the usage of `customHeader` and `customColumn` nested tags that allow to change the label and the content of some columns.
 
-Finally, notice the usage of helper function `Exa.Datatable.getDatatable` to get the JS instance of the datatable linked to the client ID 'table2' and the usage of `getInstance()` that allow to get the real DataTables.net component, wrapped by our taglib.
+Finally, notice the usage of helper function `Exa.Datatable.getDatatable` to get the JS instance of the datatable linked to the client ID 'table2' and the usage of `getInstance()` that allow to get the real DataTables.net JS component, wrapped by our taglib.
 
 Basically, this function gives you a full access to all the native and powerfull features of DataTables jQuery plug-in.
 

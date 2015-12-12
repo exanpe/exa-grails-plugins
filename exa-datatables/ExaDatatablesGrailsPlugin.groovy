@@ -18,11 +18,11 @@ class ExaDatatablesGrailsPlugin {
     def author = "Exanpe"
     def authorEmail = "exanpe@gmail.com"
     def description = '''\
-This plugin provides integration with DataTables (Table plug-in for jQuery).
+This plugin provides easy integration with DataTables.net (Table plug-in for jQuery).
 '''
 
     // URL to the plugin's documentation
-    def documentation = "https://github.com/exanpe/exa-grails-plugins"
+    def documentation = "https://github.com/exanpe/exa-grails-plugins/tree/master/exa-datatables"
 
     // Extra (optional) plugin metadata
 

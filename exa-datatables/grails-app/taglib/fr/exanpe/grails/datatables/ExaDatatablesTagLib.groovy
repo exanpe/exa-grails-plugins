@@ -25,7 +25,7 @@ class ExaDatatablesTagLib {
      * Datatable component
      *
      * @attr id REQUIRED Client ID of the datatable
-     * @attr items REQUIRED List of items to display
+     * @attr items REQUIRED The collection of objects to iterate over
      * @attr include List of property names (case-insensitive) to be retained from each item
      * @attr exclude List of property names (case-insensitive) to be removed from each item
      * @attr add Extra columns to display for each item. Cells for added columns will be blank by default,
@@ -52,7 +52,7 @@ class ExaDatatablesTagLib {
         def auto = attrs.auto ?: "true"
 
         def items = attrs.remove('items') ?: []
-        if (items.size() == 0) throwTagError("Tag [datatable] must have a valid [items] attribute")
+        if (items.size() == 0) throwTagError("Tag [datatable] must have a valid and not empty collection of [items]")
 
         def include = attrs.remove('include')
         def exclude = attrs.remove('exclude')
@@ -88,7 +88,7 @@ class ExaDatatablesTagLib {
     /**
      * Customize the rendering of a column of the datatable
      *
-     * @attr name REQUIRED Name of the column
+     * @attr name REQUIRED The name of the property column to customize
      */
     def customColumn = { attrs, body ->
         def name = attrs.name
@@ -101,10 +101,10 @@ class ExaDatatablesTagLib {
     }
 
     /**
-     * Customize the rendering of a header of the datatable
+     * Customize the rendering of a header column of the datatable
      *
-     * @attr name REQUIRED Name of the header column
-     * @attr value REQUIRED Custom value to use
+     * @attr name REQUIRED The name of the property to customize
+     * @attr value REQUIRED The label value to set (could be a literal or a i18n message)
      */
     def customHeader = { attrs, body ->
         def index = pageScope.getVariable(DATATABLE_ROW_INDEX)
@@ -120,7 +120,7 @@ class ExaDatatablesTagLib {
     }
 
     /**
-     * Before rendering datatable
+     * Before rendering the datatable
      *
      * @param columns The datatable columns
      */
@@ -158,7 +158,7 @@ class ExaDatatablesTagLib {
     }
 
     /**
-     * After rendering datatable
+     * After rendering the datatable
      */
     private void afterRender() {
         pageScope.setVariable(DATATABLE_MODEL, null)
