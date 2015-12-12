@@ -14,7 +14,7 @@
 <a name="intro"></a>
 ##INTRODUCTION
 
-This plugin provides integration with DataTables (Table plug-in for jQuery).
+This plugin provides easy integration with DataTables.net (Table plug-in for jQuery).
 
 A live demo of the taglib is available [here](http://grails-exanpe.rhcloud.com/exaDatatablesDemo/index).
 
@@ -54,16 +54,13 @@ Javascript `grails-app/assets/javascripts/application.js`:
 ```javascript
 //= require jquery
 //= require exa-datatables
-...
 ```
 
 Stylesheet `grails-app/assets/stylesheets/application.css`:
 ```
 /*
-...
 *= require exa-datatables
 *= require main
-...
 */
 ```
 
@@ -74,17 +71,14 @@ Javascript `grails-app/assets/javascripts/application.js`:
 //= require jquery
 //= require bootstrap
 //= require exa-datatables-bootstrap3
-...
 ```
 
 Stylesheet `grails-app/assets/stylesheets/application.css`:
 ```
 /*
-...
 *= require bootstrap
 *= require exa-datatables-bootstrap3
 *= require main
-...
 */
 ```
 
