@@ -7,15 +7,9 @@ import spock.lang.Specification
 import javax.xml.parsers.DocumentBuilder
 
 /**
- * This class tests XXE parsing protection
+ * Tests XXE parsing protection.
  */
 class XMLFactorySpec extends Specification {
-
-    def setup() {
-    }
-
-    def cleanup() {
-    }
 
     void "testbasic XML"() {
         setup :
@@ -51,6 +45,4 @@ class XMLFactorySpec extends Specification {
         thrown(SAXException)
 
     }
-
-
 }

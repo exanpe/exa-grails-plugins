@@ -1,8 +1,8 @@
 package fr.exanpe.grails.security;
 
 /**
- * Created by jmaupoux on 17/07/15.
+ * @author jmaupoux
  */
-public class CSRFTokenException extends Exception{
-
+public class CSRFTokenException extends RuntimeException{
+	private static final long serialVersionUID = 1;
 }

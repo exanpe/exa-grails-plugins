@@ -4,9 +4,8 @@ import org.codehaus.groovy.grails.commons.GrailsDomainClassProperty
 import org.codehaus.groovy.grails.scaffolding.AbstractGrailsTemplateGenerator
 
 /**
- * ExaGrailsTemplateGenerator
- * Based on DefaultGrailsTemplateGenerator
- * Created by jmaupoux on 17/07/15.
+ * Based on DefaultGrailsTemplateGenerator.
+ * @author jmaupoux
  */
 class ExaGrailsTemplateGenerator extends AbstractGrailsTemplateGenerator {
 

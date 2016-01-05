@@ -11,7 +11,7 @@ class @artifact.name@ {
             flash.command = new @shortName@Command()
         }
 
-        return [command : flash.command]
+        [command : flash.command]
     }
 
     def save(@shortName@Command command){

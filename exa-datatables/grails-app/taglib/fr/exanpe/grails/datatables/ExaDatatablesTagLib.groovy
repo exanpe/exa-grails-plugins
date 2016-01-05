@@ -2,12 +2,11 @@ package fr.exanpe.grails.datatables
 
 import fr.exanpe.grails.datatables.model.DatatableModel
 import fr.exanpe.grails.datatables.model.DatatableModelRow
-import fr.exanpe.grails.datatables.util.TagLibUtils
 import fr.exanpe.grails.datatables.util.TagLibUtils as Utils
 import grails.converters.JSON
 
 /**
- * Taglib that ease use of Datatables.net
+ * Eases use of Datatables.net
  */
 class ExaDatatablesTagLib {
 
@@ -16,10 +15,10 @@ class ExaDatatablesTagLib {
     static defaultEncodeAs = [taglib: 'html']
     static encodeAsForTags = [datatable: [taglib:'raw']]
 
-    private static DATATABLE_MODEL = 'datatableModel'
-    private static DATATABLE_ROW_MODEL = 'datatableRowModel'
-    private static DATATABLE_ROW_INDEX = 'datatableRowIndex'
-    private static DATATABLE_ROW_ITEM = 'datatableRowItem'
+    private static final String DATATABLE_MODEL = 'datatableModel'
+    private static final String DATATABLE_ROW_MODEL = 'datatableRowModel'
+    private static final String DATATABLE_ROW_INDEX = 'datatableRowIndex'
+    private static final String DATATABLE_ROW_ITEM = 'datatableRowItem'
 
     /**
      * Datatable component
@@ -64,7 +63,7 @@ class ExaDatatablesTagLib {
 
         DatatableModel model = beforeRender(columns)
         items.eachWithIndex { item, index ->
-            def row = TagLibUtils.addDatatableModelRow(item, columns, hiddenList)
+            def row = Utils.addDatatableModelRow(item, columns, hiddenList)
             beforeRenderRow(row, item, index)
             body()
             afterRenderRow(model, row)

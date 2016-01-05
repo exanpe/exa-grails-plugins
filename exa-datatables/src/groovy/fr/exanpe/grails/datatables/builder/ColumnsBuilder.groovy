@@ -4,17 +4,13 @@ import fr.exanpe.grails.datatables.util.TagLibUtils as Utils
 import org.codehaus.groovy.grails.web.taglib.exceptions.GrailsTagException
 
 /**
- * Builder used to compute list of columns to display into the datatable.
+ * Computes list of columns to display into the datatable.
  */
 class ColumnsBuilder {
 
-    List<String> columns
+    List<String> columns = []
 
-    ColumnsBuilder() {
-        columns = []
-    }
-
-    ColumnsBuilder from(Object item) {
+    ColumnsBuilder from(item) {
         columns = filterItemProperties(item)
         return this
     }
