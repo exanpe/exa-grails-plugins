@@ -18,6 +18,7 @@
 		<asset:javascript src="application.js"/>
 		<asset:javascript src="highlight/highlight.pack.js" />
 		<g:layoutHead/>
+		<ga:trackPageview />
 	</head>
 	<body>
 

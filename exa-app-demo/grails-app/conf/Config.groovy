@@ -118,6 +118,9 @@ grails.assets.less.compiler = 'less4j'
 grails.assets.plugin."twitter-bootstrap".excludes = ["**/*.less"]
 grails.assets.plugin."twitter-bootstrap".includes = ["bootstrap.less"]
 
+// GA conf
+google.analytics.webPropertyID = "UA-72004577-1"
+
 //conf override
 grails{
     plugin{

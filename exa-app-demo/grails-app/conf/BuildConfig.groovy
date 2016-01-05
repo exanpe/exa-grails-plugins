@@ -72,11 +72,15 @@ grails.project.dependency.resolution = {
         runtime ":database-migration:1.4.0"
         runtime ":jquery:1.11.1"
 
-        compile ":exa-security:1.0.0-SNAPSHOT"
-        compile ":exa-datatables:1.0.0-SNAPSHOT"
-
         // Twitter Bootstrap and Less
         compile ":less-asset-pipeline:1.7.0"
         runtime ':twitter-bootstrap:3.3.5'
+
+        // GA
+        compile ":google-analytics:2.3.3"
+
+        // Exa plugins
+        compile ":exa-security:1.0.0-SNAPSHOT"
+        compile ":exa-datatables:1.0.1"
     }
 }
