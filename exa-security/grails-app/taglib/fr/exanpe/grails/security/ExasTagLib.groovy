@@ -15,7 +15,7 @@ class ExasTagLib {
      * @since 1.0.0
      */
     def link = { attrs, body ->
-        def params = attrs.params?attrs.params:[:]
+        def params = attrs.params ?: [:]
         attrs.params = params
 
         SynchronizerTokensHolder holder = SynchronizerTokensHolder.store(session)

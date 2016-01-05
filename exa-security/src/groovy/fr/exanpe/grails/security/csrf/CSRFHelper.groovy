@@ -3,23 +3,23 @@ package fr.exanpe.grails.security.csrf
 import org.codehaus.groovy.grails.web.servlet.mvc.SynchronizerTokensHolder
 
 /**
- * This class hold common CSRF related methods
- * Created by jmaupoux on 17/07/15.
+ * Holds common CSRF related methods.
+ * @author jmaupoux
  */
 class CSRFHelper {
 
     /**
-     * Validate a token submitted without consumming it
+     * Validate a token submitted without consumming it.
      * @session the user session
      * @param the request params
-     * @return true if valid, false otherwise
+     * @return true if valid
      */
-    static boolean isValidToken(def session, def params) {
+    static boolean isValidToken(session, params) {
         SynchronizerTokensHolder token = session.store(session)
         try {
             return token.isValid(params[SynchronizerTokensHolder.TOKEN_URI], params[SynchronizerTokensHolder.TOKEN_KEY])
         }
-        catch(Exception e) {
+        catch(e) {
             return false
         }
     }

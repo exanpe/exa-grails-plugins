@@ -11,7 +11,7 @@ class TestController {
             flash.command = new TestCommand()
         }
 
-        return [command : flash.command]
+        [command : flash.command]
     }
 
     def save(TestCommand command){

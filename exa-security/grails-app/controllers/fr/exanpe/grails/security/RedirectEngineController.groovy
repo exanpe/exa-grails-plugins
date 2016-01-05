@@ -4,13 +4,11 @@ package fr.exanpe.grails.security
  * Offer entry point to send redirect with target defined securely
  * - From "flash" value
  * - From static configuration mapping
- * Created by jmaupoux on 19/07/15.
+ * @author jmaupoux
  */
 class RedirectEngineController {
 
     static allowedMethods = [flash : "GET"]
-
-    def grailsApplication
 
     /**
      * Redirect according to the flash.redirect variable
@@ -27,7 +25,7 @@ class RedirectEngineController {
 
         if(!flash.keepSession){
             log.debug("Session invalidate")
-            session.invalidate();
+            session.invalidate()
         }
 
         redirect(url : target)
@@ -50,8 +48,8 @@ class RedirectEngineController {
             throw new IllegalStateException("params.key not supplied")
         }
 
-        def target = null;
-        def keepSession = false;
+        def target
+        boolean keepSession = false
 
         if(mapping instanceof String){
             target = mapping
@@ -68,7 +66,7 @@ class RedirectEngineController {
 
         if(!keepSession){
             log.debug("Session invalidate")
-            session.invalidate();
+            session.invalidate()
         }
 
         redirect(url : target)

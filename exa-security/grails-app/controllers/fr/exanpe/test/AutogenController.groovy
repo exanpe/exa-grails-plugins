@@ -1,7 +1,5 @@
 package fr.exanpe.test
 
-
-
 import grails.validation.Validateable
 
 class AutogenController {
@@ -13,7 +11,7 @@ class AutogenController {
             flash.command = new AutogenCommand()
         }
 
-        return [command : flash.command]
+        [command : flash.command]
     }
 
     def save(AutogenCommand command){
