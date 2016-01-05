@@ -230,6 +230,8 @@ Basically, this function gives you a full access to all the native and powerfull
 <p align="right"><a href="#Top">Top</a></p>
 <a name="changelog"></a>
 ##CHANGE LOG
+* v1.0.1 :
+** Merged https://github.com/exanpe/exa-grails-plugins/pull/3[#3]: cleanup
 
 * v1.0.0 : Initial Release
 
