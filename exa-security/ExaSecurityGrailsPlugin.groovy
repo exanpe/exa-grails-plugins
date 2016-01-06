@@ -2,7 +2,7 @@ import fr.exanpe.grails.security.CSRFTokenException
 import grails.util.Environment
 
 class ExaSecurityGrailsPlugin {
-    def version = "1.0.0"
+    def version = "1.0.1"
     def grailsVersion = "2.4 > *"
     def pluginExcludes = [
             "grails-app/views/**",

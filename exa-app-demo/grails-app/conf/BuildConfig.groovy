@@ -80,7 +80,7 @@ grails.project.dependency.resolution = {
         compile ":google-analytics:2.3.3"
 
         // Exa plugins
-        compile ":exa-security:1.0.0-SNAPSHOT"
+        compile ":exa-security:1.0.1"
         compile ":exa-datatables:1.0.1"
     }
 }
