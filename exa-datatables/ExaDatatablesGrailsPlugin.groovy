@@ -1,7 +1,7 @@
 import fr.exanpe.grails.datatables.marshaller.DatatableModelRowJsonMarshaller
 
 class ExaDatatablesGrailsPlugin {
-    def version = "1.0.1"
+    def version = "1.0.2-SNAPSHOT"
     def grailsVersion = "2.4 > *"
     def pluginExcludes = [
         "grails-app/domain/**",
@@ -20,7 +20,7 @@ class ExaDatatablesGrailsPlugin {
     def issueManagement = [ system: "github", url: "https://github.com/exanpe/exa-grails-plugins/issues" ]
     def scm = [ url: "https://github.com/exanpe/exa-grails-plugins/tree/master/exa-datatables" ]
 
-    def doWithSpring = {
+    def doWithApplicationContext = {
         DatatableModelRowJsonMarshaller.register()
     }
 }
