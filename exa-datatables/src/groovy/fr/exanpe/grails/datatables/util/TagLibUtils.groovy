@@ -2,6 +2,7 @@ package fr.exanpe.grails.datatables.util
 
 import fr.exanpe.grails.datatables.builder.ColumnsBuilder
 import fr.exanpe.grails.datatables.model.DatatableModelRow
+import org.codehaus.groovy.grails.web.json.JSONObject
 
 class TagLibUtils {
 
@@ -34,7 +35,7 @@ class TagLibUtils {
         DatatableModelRow row = new DatatableModelRow()
         def all = columns + hiddenColumns
         all.each { column ->
-            def value = item.hasProperty(column) ? item."$column" : ""
+            def value = getItemProperty(item, column)
             row.addCell(column, value?.toString(), hiddenColumns.contains(column))
         }
         return row
@@ -42,6 +43,7 @@ class TagLibUtils {
 
     /**
      * Convert the given columns from string to list of string
+     *
      * @param input
      * @return
      */
@@ -50,5 +52,19 @@ class TagLibUtils {
         def list = columns.contains(",") ? columns.tokenize(",") : columns.tokenize()
         list = list*.trim()
         return list
+    }
+
+    /**
+     * Get the value of property from the current item
+     *
+     * @param item          The current item we iterate over
+     * @param property      The property of the item to get
+     * @return
+     */
+    private static def getItemProperty(def item, String property) {
+        if (item instanceof JSONObject) {
+            return item.containsKey(property) ? item.get(property) : ""
+        }
+        return item.hasProperty(property) ? item."$property" : ""
     }
 }

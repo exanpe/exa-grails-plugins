@@ -1,6 +1,7 @@
 package fr.exanpe.grails.datatables.builder
 
 import fr.exanpe.grails.datatables.util.TagLibUtils as Utils
+import org.codehaus.groovy.grails.web.json.JSONObject
 import org.codehaus.groovy.grails.web.taglib.exceptions.GrailsTagException
 
 /**
@@ -11,7 +12,7 @@ class ColumnsBuilder {
     List<String> columns = []
 
     ColumnsBuilder from(item) {
-        columns = filterItemProperties(item)
+        columns = item instanceof JSONObject ? item.keySet() as List<String> : filterItemProperties(item)
         return this
     }
 
@@ -76,6 +77,6 @@ class ColumnsBuilder {
                         'instanceControllersDomainBindingApi', '$defaultDatabindingWhiteList', 'instanceDatabindingApi',
                         'instanceGormValidationApi', 'errors', '$changedProperties', 'version', 'instanceGormInstanceApi',
                         'staticGormStaticApi', 'log', 'instanceConvertersApi', 'mimeTypesApi']
-        return item.class.declaredFields.findAll { !it.synthetic && !(it.name in filtered) }.collect { it.name }
+        return item.class?.declaredFields.findAll { !it.synthetic && !(it.name in filtered) }.collect { it.name }
     }
 }
