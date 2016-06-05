@@ -4,6 +4,7 @@ import fr.exanpe.grails.datatables.model.DatatableModel
 import fr.exanpe.grails.datatables.model.DatatableModelRow
 import fr.exanpe.grails.datatables.util.TagLibUtils as Utils
 import grails.converters.JSON
+import org.codehaus.groovy.grails.web.converters.exceptions.ConverterException
 
 /**
  * Eases use of Datatables.net
@@ -39,6 +40,7 @@ class ExaDatatablesTagLib {
      * @attr ordering  Enable or disable column ordering (default true)
      * @attr paging  Enable or disable paging (default true)
      * @attr infos  Enable or disable table information display field (default true)
+     * @attr stateSave  Enable or disable saving the state of a table (paging position, ordering state, etc) so that is can be restored when the user reloads a page (default true)
      * @attr auto  Enable or disable auto rendering of the datatable (default true).
      *             Used to take control over Datatable settings or customization.
      *             If false, you have to call render(options) yourself on client-side.
@@ -48,9 +50,10 @@ class ExaDatatablesTagLib {
         def ordering = attrs.ordering ?: "true"
         def paging = attrs.paging ?: "true"
         def infos = attrs.infos ?: "true"
+        def stateSave = attrs.stateSave ?: "true"
         def auto = attrs.auto ?: "true"
 
-        def items = attrs.remove('items') ?: []
+        def items = getListOfItems(attrs.remove('items') ?: [])
         if (items.size() == 0) throwTagError("Tag [datatable] must have a valid and not empty collection of [items]")
 
         def include = attrs.remove('include')
@@ -80,6 +83,7 @@ class ExaDatatablesTagLib {
                         ordering: ordering,
                         paging: paging,
                         infos: infos,
+                        stateSave: stateSave,
                         auto: auto]
         )
     }
@@ -161,5 +165,23 @@ class ExaDatatablesTagLib {
      */
     private void afterRender() {
         pageScope.setVariable(DATATABLE_MODEL, null)
+    }
+
+    /**
+     * Get items as list of objects, particularly for JSON contents
+     *
+     * @param items     Items to display
+     */
+    private def getListOfItems(def items) {
+        // If items are sent in JSON format
+        if (items instanceof String || items instanceof GString) {
+            try {
+                return JSON.parse(items)
+            }
+            catch (ConverterException e) {
+                throwTagError("Tag [datatable] attributes [items] does not contains valid JSON content")
+            }
+        }
+        return items
     }
 }
