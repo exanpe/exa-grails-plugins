@@ -21,8 +21,9 @@ if (!Exa) {
  * @param {boolean} ordering		Columns ordering
  * @param {boolean} paging		    Table pagination
  * @param {boolean} infos		    Table informations
+ * @param {boolean} stateSave       Save the state of a table or not (paging position, ordering state, etc)
  */
-Exa.Datatable = function(id, data, columns, auto, filtering, ordering, paging, infos) {
+Exa.Datatable = function(id, data, columns, auto, filtering, ordering, paging, infos, stateSave) {
     this.id = id;
     this.data = data;
     this.columns = columns;
@@ -31,6 +32,7 @@ Exa.Datatable = function(id, data, columns, auto, filtering, ordering, paging, i
     this.ordering = (ordering === true);
     this.paging = (paging === true);
     this.infos = (infos === true);
+    this.stateSave = (stateSave === true);
     this.options = {};
     this.instance = null;
 };
@@ -91,7 +93,7 @@ Exa.Datatable.prototype._init = function() {
         pageLength: 8,
         lengthMenu: [[8, 20, 50], [8, 20, 50]],
         // Local storage of the grid state
-        stateSave: false,
+        stateSave: this.stateSave,
         // Columns
         columns: columns
     };
