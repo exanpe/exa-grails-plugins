@@ -110,6 +110,7 @@ Tag attributes:
 | ordering  | Enable or disable column ordering.                                                                                                                                                                        |      true     |
 | paging    | Enable or disable paging.                                                                                                                                                                                 |      true     |
 | infos     | Enable or disable table information display field.                                                                                                                                                        |      true     |
+| stateSave | Enable or disable saving the state of a table (paging position, ordering state, etc) so that is can be restored when the user reloads a page.                                                             |      true     |
 | auto      | **EXPERIMENTAL** Enable or disable auto rendering of the datatable.  Used to take control over Datatable settings or customization.  If false, you have to call render(options) yourself on client-side.  |      true     |
 
 ### **customHeader** nesteg tag
