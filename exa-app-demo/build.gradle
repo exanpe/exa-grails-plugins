@@ -81,7 +81,7 @@ assets {
     minifyCss = true
 
     excludes = ['**/*.less']
-    includes = ['bootstrap.less', 'custom-bootstrap.less', 'theme.less']
+    includes = ['fonts/*', 'bootstrap.less', 'custom-bootstrap.less', 'theme.less']
     configOptions = [
         less: [
             compiler: 'less4j'

@@ -1,0 +1,9 @@
+<div class="footer">
+    <div class="container-fluid">
+        <div class="row">
+            <p class="col-lg-12">
+                ©2016 Exa App Demo | Version <g:meta name="info.app.version"/>
+            </p>
+        </div>
+    </div>
+</div>
