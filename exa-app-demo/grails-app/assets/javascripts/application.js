@@ -6,7 +6,7 @@
 // to create separate JavaScript files as needed.
 //
 //= require jquery-2.2.0.min
-//= require bootstrap
+//= require bootstrap.min
 //= require exa-datatables-bootstrap3
 //= require_tree .
 //= require_self

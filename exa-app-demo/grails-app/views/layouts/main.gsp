@@ -59,6 +59,7 @@
 
 <g:javascript>
     hljs.initHighlighting();
+    $('.dropdown-toggle').dropdown();
 </g:javascript>
 </body>
 </html>
