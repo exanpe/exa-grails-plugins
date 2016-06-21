@@ -21,7 +21,8 @@ table.dataTable thead .sorting_desc_disabled {
     padding: 0;
 }
 
-.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-    background-color: none;
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover,
+.dataTables_wrapper .dataTables_paginate .paginate_button:active {
+    background: transparent;
     border-color: white;
 }
