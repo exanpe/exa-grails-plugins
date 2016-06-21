@@ -231,6 +231,11 @@ Basically, this function gives you a full access to all the native and powerfull
 <p align="right"><a href="#Top">Top</a></p>
 <a name="changelog"></a>
 ##CHANGE LOG
+* v1.0.2 :
+** Add stateSave parameter : Enable or disable saving the state of a table (paging position, ordering state, etc) so that is can be restored when the user reloads a page.
+** Accepts JSON format as input data
+** Upgrade to DataTables 1.10.12 version
+
 * v1.0.1 :
 ** Merged https://github.com/exanpe/exa-grails-plugins/pull/3[#3]: cleanup
 
