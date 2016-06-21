@@ -63,21 +63,20 @@ dependencies {
 task wrapper(type: Wrapper) {
     gradleVersion = gradleWrapperVersion
 }
+
 grailsPublish {
-    // TODO: Provide values here
-    user = 'user'
-    key = 'key'
-    githubSlug = 'foo/bar'
+    userOrg = 'exanpe'
+    githubSlug = 'exanpe/exa-grails-plugins'
     license {
         name = 'Apache-2.0'
     }
-    title = "My Plugin"
-    desc = "Full plugin description"
-    developers = [johndoe:"John Doe"]
-    portalUser = ""
-    portalPassword = ""    
+    title = "Exa Datatables"
+    desc = "Provides easy integration with DataTables.net (Table plug-in for jQuery)"
+    developers = [lguerin: "Laurent Guerin"]
 }
 
 assets {
     packagePlugin = true
+    minifyJs = true
+    minifyCss = true
 }
