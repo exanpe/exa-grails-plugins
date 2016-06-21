@@ -21,7 +21,22 @@ table.dataTable thead .sorting_desc_disabled {
     padding: 0;
 }
 
-.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-    background-color: none;
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover,
+.dataTables_wrapper .dataTables_paginate .paginate_button:active {
+    background: transparent;
     border-color: white;
+}
+
+/**
+ * Fix Glyphicons fonts loading errors with Grails 3.x
+ * https://github.com/grails/grails-core/issues/9679
+ */
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('/assets/datatables/integration/bootstrap/3/fonts/glyphicons-halflings-regular.eot');
+    src: url('/assets/datatables/integration/bootstrap/3/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+         url('/assets/datatables/integration/bootstrap/3/fonts/glyphicons-halflings-regular.woff2') format('woff2'),
+         url('/assets/datatables/integration/bootstrap/3/fonts/glyphicons-halflings-regular.woff') format('woff'),
+         url('/assets/datatables/integration/bootstrap/3/fonts/glyphicons-halflings-regular.ttf') format('truetype'),
+         url('/assets/datatables/integration/bootstrap/3/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
