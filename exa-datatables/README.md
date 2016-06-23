@@ -37,15 +37,33 @@ Of course, this plugin provides a way to use all of existing features of DataTab
 <a name="configuration"></a>
 ##Plugin configuration
 
-The plugin depends on both jQuery and asset-pipeline, so include them as dependencies in your BuildConfig.groovy file :
+### Grails 2.4.x
+
+The plugin depends on both jQuery and asset-pipeline, so include them as dependencies in your `BuildConfig.groovy` file :
 
 ```groovy
     plugins {
         compile ":asset-pipeline:1.9.9"
         runtime ":jquery:1.11.1"
-        compile ":exa-datatables:X.Y.Z"
+        compile ":exa-datatables:1.0.2"
     }
 ```
+
+### Grails 3.1.8 +
+
+The plugin is now available for Grails 3, just include the following dependency in your `build.gradle` file:
+
+```
+dependencies {
+    // Exa Datatables plugin
+    runtime "fr.exanpe.grails:exa-datatables:2.0.0"
+}
+```
+
+An example Grails 3 project with exa-datatables taglib integration is available here: [Grails 3 sample project](https://github.com/lguerin/exa-datatables-grails3-sample).
+Just clone the project, set Grails 3.1.8 version in your favorite shell and execute: `grails run-app` to see the plugin in action.
+
+### Assets conf
 
 Then, thanks to the Asset Pipeline plugin, you just have to reference the following files to load the static
 resources needed by DataTables:
@@ -231,6 +249,9 @@ Basically, this function gives you a full access to all the native and powerfull
 <p align="right"><a href="#Top">Top</a></p>
 <a name="changelog"></a>
 ##CHANGE LOG
+* v2.0.0 :
+** Same features as v1.0.2 but full compatible and dedicated to Grails 3.1.8+
+
 * v1.0.2 :
 ** Add stateSave parameter : Enable or disable saving the state of a table (paging position, ordering state, etc) so that is can be restored when the user reloads a page.
 ** Accepts JSON format as input data
@@ -244,8 +265,6 @@ Basically, this function gives you a full access to all the native and powerfull
 <p align="right"><a href="#Top">Top</a></p>
 <a name="roadmap"></a>
 ##ROADMAP
-
-Compatibility with Grails 3.
 
 Better integration with ajax data loading, and some other features of DataTables extensions and plugins.
 
