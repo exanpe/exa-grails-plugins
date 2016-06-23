@@ -81,6 +81,6 @@ grails.project.dependency.resolution = {
 
         // Exa plugins
         compile ":exa-security:1.0.1"
-        compile ":exa-datatables:1.0.1"
+        compile ":exa-datatables:1.0.2"
     }
 }

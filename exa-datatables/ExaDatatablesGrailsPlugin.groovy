@@ -1,7 +1,7 @@
 import fr.exanpe.grails.datatables.marshaller.DatatableModelRowJsonMarshaller
 
 class ExaDatatablesGrailsPlugin {
-    def version = "1.0.2-SNAPSHOT"
+    def version = "1.0.2"
     def grailsVersion = "2.4 > *"
     def pluginExcludes = [
         "grails-app/domain/**",
