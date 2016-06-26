@@ -54,6 +54,13 @@ The plugin depends on both jQuery and asset-pipeline, so include them as depende
 The plugin is now available for Grails 3, just include the following dependency in your `build.gradle` file:
 
 ```
+repositories {
+    ...
+
+    // Exanpe plugins
+    maven { url "https://dl.bintray.com/exanpe/plugins" }
+}
+
 dependencies {
     // Exa Datatables plugin
     runtime "fr.exanpe.grails:exa-datatables:2.0.0"
