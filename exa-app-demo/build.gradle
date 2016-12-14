@@ -69,7 +69,7 @@ dependencies {
     assets 'com.bertramlabs.plugins:less-asset-pipeline:2.8.2'
 
     compile "org.jfairy:jfairy:0.3.0"
-    compile "fr.exanpe.grails:exa-datatables:2.0.0"
+    compile "fr.exanpe.grails:exa-datatables:2.0.1-SNAPSHOT"
 }
 
 task wrapper(type: Wrapper) {

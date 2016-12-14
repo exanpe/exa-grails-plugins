@@ -7,9 +7,9 @@ class ExaDatatablesGrailsPlugin extends Plugin {
 
     def grailsVersion = "3.1.8 > *"
     def pluginExcludes = [
-        "grails-app/domain/**",
-        "grails-app/controllers/**",
-        "grails-app/services/**",
+        "domain/**",
+        "controllers/**",
+        "services/**",
         "src/groovy/fr/exanpe/grails/datatables/test/**"
     ]
     def title = "Exa Datatables Plugin"

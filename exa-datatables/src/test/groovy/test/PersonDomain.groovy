@@ -1,5 +1,8 @@
 package test
 
+import grails.gorm.annotation.Entity
+
+@Entity
 class PersonDomain {
 
     String name

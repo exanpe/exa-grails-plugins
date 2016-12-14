@@ -63,7 +63,7 @@ repositories {
 
 dependencies {
     // Exa Datatables plugin
-    runtime "fr.exanpe.grails:exa-datatables:2.0.0"
+    runtime "fr.exanpe.grails:exa-datatables:2.0.1"
 }
 ```
 
@@ -256,6 +256,9 @@ Basically, this function gives you a full access to all the native and powerfull
 <p align="right"><a href="#Top">Top</a></p>
 <a name="changelog"></a>
 ##CHANGE LOG
+* v2.0.1 :
+** Bugfix : filtering plugin resources [#7](https://github.com/exanpe/exa-grails-plugins/issues/7)
+
 * v2.0.0 :
 ** Same features as v1.0.2 but full compatible and dedicated to Grails 3.1.8+
 

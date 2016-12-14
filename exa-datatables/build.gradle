@@ -12,7 +12,7 @@ buildscript {
     }
 }
 
-version "2.0.1-SNAPSHOT"
+version "2.0.1"
 group "fr.exanpe.grails"
 
 apply plugin:"eclipse"
@@ -79,4 +79,14 @@ assets {
     packagePlugin = true
     minifyJs = true
     minifyCss = true
+}
+
+jar {
+    exclude([
+            "test/**",
+            "domain/**",
+            "controllers/**",
+            "services/**",
+            "fr/exanpe/grails/datatables/test/**"
+            ])
 }
