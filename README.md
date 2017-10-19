@@ -11,7 +11,7 @@ Most of the important features are enabled by default like:
 
 [Link to documentation and description](https://github.com/exanpe/exa-grails-plugins/tree/master/exa-datatables/README.md)
 
-[Link to the live Demo](http://grails-exanpe.rhcloud.com/exaDatatablesDemo/index)
+[Link to the live Demo](http://grails-exanpe-grails-exanpe.193b.starter-ca-central-1.openshiftapps.com/exaDatatablesDemo/index)
 
 
 ## [EXA-SECURITY](https://github.com/exanpe/exa-grails-plugins/tree/master/exa-security)
@@ -26,4 +26,4 @@ This plugin provides features to enhance Grails 2.4.x security, as well as few o
 
 [Link to documentation and description](https://github.com/exanpe/exa-grails-plugins/tree/master/exa-security/README.md)
 
-[Link to the live Demo](http://grails-exanpe.rhcloud.com/exaSecurityDemo/index)
+[Link to the live Demo](http://grails-exanpe-grails-exanpe.193b.starter-ca-central-1.openshiftapps.com/exaSecurityDemo/index)
