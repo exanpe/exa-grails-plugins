@@ -16,7 +16,7 @@
 
 This plugin provides easy integration with DataTables.net (Table plug-in for jQuery).
 
-A live demo of the taglib is available [here](http://grails-exanpe.rhcloud.com/exaDatatablesDemo/index).
+A live demo of the taglib is available [here](http://grails-exanpe-grails-exanpe.193b.starter-ca-central-1.openshiftapps.com/exaDatatablesDemo/index).
 
 <p align="right"><a href="#Top">Top</a></p>
 <a name="features"></a>
