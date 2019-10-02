@@ -12,7 +12,7 @@
 * [License](#license)
 
 <a name="intro"></a>
-##INTRODUCTION
+## INTRODUCTION
 
 This plugin provides easy integration with DataTables.net (Table plug-in for jQuery).
 
@@ -20,8 +20,8 @@ A live demo of the taglib is available [here](http://grails-exanpe-grails-exanpe
 
 <p align="right"><a href="#Top">Top</a></p>
 <a name="features"></a>
-##FEATURES
 
+## FEATURES
 This plugin is pre-configured to ease integration with DataTables.
 So, most of the important features are enabled by default like:
 * Instant search,
@@ -35,7 +35,7 @@ Of course, this plugin provides a way to use all of existing features of DataTab
 
 <p align="right"><a href="#Top">Top</a></p>
 <a name="configuration"></a>
-##Plugin configuration
+## Plugin configuration
 
 ### Grails 2.4.x
 
@@ -63,7 +63,7 @@ repositories {
 
 dependencies {
     // Exa Datatables plugin
-    runtime "fr.exanpe.grails:exa-datatables:2.0.0"
+    runtime "fr.exanpe.grails:exa-datatables:2.0.1"
 }
 ```
 
@@ -109,7 +109,9 @@ Stylesheet `grails-app/assets/stylesheets/application.css`:
 
 <p align="right"><a href="#Top">Top</a></p>
 <a name="taglib"></a>
-##Taglib
+
+## Taglib
+
 
 All the tags must be used through the namespace `exa`.
 
@@ -173,7 +175,8 @@ To notice: you have access to the current iterator value through `it` variable w
 
 <p align="right"><a href="#Top">Top</a></p>
 <a name="usage"></a>
-##USAGE
+
+## USAGE
 
 #### Simple case
 
@@ -255,23 +258,26 @@ Basically, this function gives you a full access to all the native and powerfull
 
 <p align="right"><a href="#Top">Top</a></p>
 <a name="changelog"></a>
-##CHANGE LOG
-* v2.0.0 :
+
+## CHANGE LOG  
+
+* v2.0.0 :  
 ** Same features as v1.0.2 but full compatible and dedicated to Grails 3.1.8+
 
-* v1.0.2 :
+* v1.0.2 :  
 ** Add stateSave parameter : Enable or disable saving the state of a table (paging position, ordering state, etc) so that is can be restored when the user reloads a page.
 ** Accepts JSON format as input data
 ** Upgrade to DataTables 1.10.12 version
 
-* v1.0.1 :
+* v1.0.1 :  
 ** Merged https://github.com/exanpe/exa-grails-plugins/pull/3[#3]: cleanup
 
-* v1.0.0 : Initial Release
+* v1.0.0 : Initial Release  
 
 <p align="right"><a href="#Top">Top</a></p>
 <a name="roadmap"></a>
-##ROADMAP
+
+## ROADMAP
 
 Better integration with ajax data loading, and some other features of DataTables extensions and plugins.
 
@@ -279,7 +285,8 @@ If you need another features, please fill an issue on Github!
 
 <p align="right"><a href="#Top">Top</a></p>
 <a name="License"></a>
-##LICENSE
+
+## LICENSE
 
 Copyright 2015 EXANPE <exanpe@gmail.com>
 
